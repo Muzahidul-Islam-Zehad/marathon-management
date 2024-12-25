@@ -1,15 +1,19 @@
 
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../Providers/AuthProvider';
 
 const RegisterPage = () => {
 
     const { setUser, googleLogin, registerWithEmailPass, updateProfileUser } = useContext(contextProvider);
 
+    const [err,seterr] = useState(null);
+    const navigate = useNavigate();
+
     const handleRegister = (e) => {
         e.preventDefault();
         // Add registration logic here
+        seterr(null);
 
         const form = e.target;
         const name = form.name.value;
@@ -17,9 +21,26 @@ const RegisterPage = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
-        console.log(name, email, photo, password);
-
         const updateProfileData = { displayName: name, photoURL: photo };
+
+        const upperCaseRegX = /[A-Z]/;
+        const lowerCaseRegX = /[a-z]/;
+
+        if(password.length<6)
+        {
+            seterr('number');
+            return;
+        }
+        if(!upperCaseRegX.test(password))
+        {
+            seterr('upper');
+            return;
+        }
+        if(!lowerCaseRegX.test(password))
+        {
+            seterr('lower');
+            return;
+        }
 
         registerWithEmailPass(email, password)
             .then((res) => {
@@ -30,6 +51,8 @@ const RegisterPage = () => {
                             .then(() => {
                                 // Use the updated user details
                                 setUser({...user});
+                                form.reset();
+                                navigate('/')
                                 console.log("Profile updated successfully!");
                             })
                             .catch((reloadError) => {
@@ -113,7 +136,7 @@ const RegisterPage = () => {
                             placeholder="Enter your password"
                         />
                         <p className="text-xs text-gray-500 mt-2">
-                            Password must contain at least 6 characters, including uppercase and lowercase letters.
+                            <span className={err ==='number'?'text-red-600 font-bold':''}>Password must contain at least 6 characters</span>, <span className={err === 'upper' ?'text-red-600 font-bold':''}>including uppercase </span > and <span className={err ==='lower' ?'text-red-600 font-bold':''}>lowercase letters.</span>
                         </p>
                     </div>
 

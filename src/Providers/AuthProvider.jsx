@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [marathons, setMarathons] = useState([]);
 
     useEffect(() => {
         setLoading(true);
@@ -62,6 +63,8 @@ const AuthProvider = ({children}) => {
         registerWithEmailPass,
         updateProfileUser,
         loginWithEmailAndPass,
+        marathons,
+        setMarathons,
     }
 
     return (

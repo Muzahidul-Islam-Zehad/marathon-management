@@ -9,6 +9,7 @@ import AddMarathon from "../Pages/AddMarathon";
 import PrivateRoute from "../Privateroute/PrivateRoute";
 import MyMarathons from "../Pages/MyMarathons";
 import MyApplyList from "../Pages/MyApplyList";
+import MarathonDetails from "../Pages/MarathonDetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/marathons',
-                element: <Marathons></Marathons>
+                element: <PrivateRoute><Marathons></Marathons></PrivateRoute>
+            },
+            {
+                path: '/marathon-details/:id',
+                element: <PrivateRoute><MarathonDetails></MarathonDetails></PrivateRoute>
             }
         ]
     },

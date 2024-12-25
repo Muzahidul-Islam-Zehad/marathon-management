@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="bg-base-100 shadow-md">
-      <div className="container mx-auto flex justify-between items-center px-4 py-2">
+      <div className="w-11/12 mx-auto flex justify-between items-center py-2">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-primary">
           Marathon Management

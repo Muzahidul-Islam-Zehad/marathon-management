@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
             if (currentUser) {
                 setUser(currentUser);
                 const tokenGenerate  = async() => {
-                    const {data} = await axios.post(`${import.meta.env.VITE_url}/jwt`,currentUser.email,{withCredentials: true})
+                    const {data} = await axios.post(`${import.meta.env.VITE_url}/jwt`,{email: currentUser.email},{withCredentials: true})
                 }
                 tokenGenerate();
             } else {

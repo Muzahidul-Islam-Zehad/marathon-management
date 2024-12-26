@@ -13,11 +13,11 @@ const MarathonDetailsPage = () => {
 
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/${id}`)
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/${id}?email=${user.email}`,{withCredentials: true})
             setMarathon(data);
         }
         fethcing()
-    }, [id])
+    }, [id, user.email])
 
     const {
         image,

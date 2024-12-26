@@ -10,7 +10,7 @@ const MyApplyList = () => {
     const [myApply, setMyApply] = useState([]);
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}`)
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}`, {withCredentials: true})
             setMyApply(data);
         }
         fethcing()

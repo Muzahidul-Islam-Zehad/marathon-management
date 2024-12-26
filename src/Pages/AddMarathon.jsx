@@ -35,9 +35,8 @@ const AddMarathon = () => {
             
         };
 
-        console.log(addMarathonData);
 
-        const {data} = await axios.post(`${import.meta.env.VITE_url}/marathons`, addMarathonData)
+        const {data} = await axios.post(`${import.meta.env.VITE_url}/marathons/?uEmail=${user.email}`, addMarathonData, {withCredentials: true})
         console.log(data);
     };
 

@@ -4,8 +4,20 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import MarathonCard from "../Components/MarathonCard";
 
 const Home = () => {
+  const [limited, setLimited] = useState([]);
+
+  useEffect(() => {
+    const fethcing = async () => {
+        const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/limited`,)
+        setLimited(data);
+    }
+    fethcing()
+}, [setLimited])
   return (
     <div>
       {/* Banner Section */}
@@ -35,6 +47,15 @@ const Home = () => {
             </div>
           </SwiperSlide>
         </Swiper>
+      </div>
+
+      <div>
+      <h1 className="text-3xl font-bold text-center my-6">New Marathons</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+          {
+            limited.map(l => <MarathonCard key={l._id} marathon={l}></MarathonCard>)
+          }
+        </div>
       </div>
 
       {/* Upcoming Marathons Section */}

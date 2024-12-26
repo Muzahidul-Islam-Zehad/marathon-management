@@ -12,7 +12,7 @@ const MyMarathonsList = () => {
 
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons?email=${user.email}`)
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/my-marathon?email=${user.email}`, {withCredentials: true})
             setMyMarathon(data);
         }
         fethcing()

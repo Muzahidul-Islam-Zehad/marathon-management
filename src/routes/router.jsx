@@ -56,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/marathon-details/:id',
                 element: <PrivateRoute><MarathonDetails></MarathonDetails></PrivateRoute>
+            },
+            {
+                path: '/dashboard/my-apply-list/update',
+                element:<div>this is update</div>
             }
         ]
     },

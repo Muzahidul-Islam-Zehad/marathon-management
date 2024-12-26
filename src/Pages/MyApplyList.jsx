@@ -44,16 +44,16 @@ const MyApplyList = () => {
                                 <td className="border border-gray-300 px-4 py-2 text-center">{idx + 1}</td>
                                 <td className="border border-gray-300 px-4 py-2">{apply.title}</td>
                                 <td className="border border-gray-300 px-4 py-2 text-center">{apply.startDate}</td>
-                                <td className="border border-gray-300 px-4 py-2 text-center space-x-2">
-                                    <Link to={'/dashboard/my-apply-list/update'}>
+                                <td className="border flex flex-col md:flex-row gap-2 justify-center items-center border-gray-300 px-4 py-2 text-center space-x-2">
+                                    <Link to={`/dashboard/my-apply-list/update/${apply._id}`}>
                                         <button
-                                            className="btn btn-sm btn-primary"
+                                            className="btn btn-sm btn-primary w-20"
                                         >
                                             Update
                                         </button>
                                     </Link>
                                     <button
-                                        className="btn btn-sm btn-error"
+                                        className="btn btn-sm btn-error w-20"
                                         onClick={() => handleDelete(apply._id, apply.marathonId)}
                                     >
                                         Delete

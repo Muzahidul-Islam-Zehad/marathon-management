@@ -10,6 +10,7 @@ import PrivateRoute from "../Privateroute/PrivateRoute";
 import MyMarathons from "../Pages/MyMarathons";
 import MyApplyList from "../Pages/MyApplyList";
 import MarathonDetails from "../Pages/MarathonDetailsPage";
+import UpdateApply from "../Pages/UpdateApply";
 
 const router = createBrowserRouter([
     {
@@ -58,8 +59,8 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><MarathonDetails></MarathonDetails></PrivateRoute>
             },
             {
-                path: '/dashboard/my-apply-list/update',
-                element:<div>this is update</div>
+                path: '/dashboard/my-apply-list/update/:id',
+                element:<PrivateRoute><UpdateApply></UpdateApply></PrivateRoute>
             }
         ]
     },

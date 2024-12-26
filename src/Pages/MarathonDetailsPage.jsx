@@ -1,17 +1,15 @@
-
-
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { contextProvider } from "../Providers/AuthProvider";
 import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 
 const MarathonDetailsPage = () => {
-    const {user} = useContext(contextProvider);
+    const { user } = useContext(contextProvider);
     const { id } = useParams();
     const [marathon, setMarathon] = useState({});
     const [openForm, setOpenForm] = useState(false);
-    
 
     useEffect(() => {
         const fethcing = async () => {
@@ -45,28 +43,28 @@ const MarathonDetailsPage = () => {
         }
     };
 
-    const handleFormSubmit = async(e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic here
         const form = e.target;
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
         const contactNumber = form.contactNumber.value;
-        const additionalInfo = form.additionalInfo.value; 
+        const additionalInfo = form.additionalInfo.value;
 
         const submittionData = {
             email: user.email,
             title,
             startDate,
-            name : {firstName, lastName},
+            name: { firstName, lastName },
             contactNumber,
             additionalInfo,
-            marathonId : id
+            marathonId: id
         }
 
         console.log(submittionData);
 
-        const {data} = await axios.post(`${import.meta.env.VITE_url}/applied-marathons`, submittionData)
+        const { data } = await axios.post(`${import.meta.env.VITE_url}/applied-marathons`, submittionData)
 
         console.log(data);
     };
@@ -105,14 +103,40 @@ const MarathonDetailsPage = () => {
                         className={`btn w-full sm:w-auto ${isRegistrationOpen() ? "btn-primary" : "btn-disabled"
                             }`}
                         disabled={!isRegistrationOpen()}
-                        onClick={()=>setOpenForm(true)}
+                        onClick={() => setOpenForm(true)}
                     >
                         Register Now
                     </button>
+
+                    {/* Countdown Timer */}
+                    {isRegistrationOpen() && (
+                        <div className="mt-4 flex justify-center">
+                            <CountdownCircleTimer
+                                isPlaying
+                                duration={
+                                    Math.ceil((new Date(endRegistration) - new Date()) / 1000)
+                                }
+                                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+                                colorsTime={[10, 5, 2, 0]}
+                                onComplete={() => {
+                                    console.log("Registration period ended");
+                                    return { shouldRepeat: false };
+                                }}
+                            >
+                                {({ remainingTime }) => (
+                                    <div className="text-lg font-semibold">
+                                        {remainingTime > 0
+                                            ? `${Math.floor(remainingTime / 60)}m ${remainingTime % 60}s`
+                                            : "Registration Closed"}
+                                    </div>
+                                )}
+                            </CountdownCircleTimer>
+                        </div>
+                    )}
                 </div>
 
                 {/* Right: Registration Form */}
-                <div className={`bg-white shadow-lg w-full rounded-lg p-6 ${openForm? 'block' : 'hidden'}`}>
+                <div className={`bg-white shadow-lg w-full rounded-lg p-6 ${openForm ? 'block' : 'hidden'}`}>
                     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
                         <h2 className="text-2xl font-bold text-center mb-6">Marathon Registration</h2>
 

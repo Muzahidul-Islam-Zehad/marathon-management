@@ -5,9 +5,10 @@ import { contextProvider } from '../Providers/AuthProvider';
 
 const RegisterPage = () => {
 
-    const { setUser, googleLogin, registerWithEmailPass, updateProfileUser } = useContext(contextProvider);
+    const { setUser, googleLogin, registerWithEmailPass, updateProfileUser, setLoading } = useContext(contextProvider);
 
-    const [err,seterr] = useState(null);
+    const [err, seterr] = useState(null);
+
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -26,34 +27,31 @@ const RegisterPage = () => {
         const upperCaseRegX = /[A-Z]/;
         const lowerCaseRegX = /[a-z]/;
 
-        if(password.length<6)
-        {
+        if (password.length < 6) {
             seterr('number');
             return;
         }
-        if(!upperCaseRegX.test(password))
-        {
+        if (!upperCaseRegX.test(password)) {
             seterr('upper');
             return;
         }
-        if(!lowerCaseRegX.test(password))
-        {
+        if (!lowerCaseRegX.test(password)) {
             seterr('lower');
             return;
         }
 
         registerWithEmailPass(email, password)
             .then((res) => {
-                const user = res.user; // Current user object after registration
-                updateProfileUser(updateProfileData) // Update profile with name and photo
+                const user = res.user;
+                updateProfileUser(updateProfileData)
                     .then(() => {
-                        user.reload() // Reload the user to fetch updated data
+                        user.reload()
                             .then(() => {
-                                // Use the updated user details
-                                setUser({...user});
+                                setUser({ ...user });
                                 form.reset();
-                                navigate('/')
-                                console.log("Profile updated successfully!");
+                                setLoading(false);
+                                navigate('/');
+
                             })
                             .catch((reloadError) => {
                                 console.error("Error reloading user:", reloadError.message);
@@ -136,7 +134,7 @@ const RegisterPage = () => {
                             placeholder="Enter your password"
                         />
                         <p className="text-xs text-gray-500 mt-2">
-                            <span className={err ==='number'?'text-red-600 font-bold':''}>Password must contain at least 6 characters</span>, <span className={err === 'upper' ?'text-red-600 font-bold':''}>including uppercase </span > and <span className={err ==='lower' ?'text-red-600 font-bold':''}>lowercase letters.</span>
+                            <span className={err === 'number' ? 'text-red-600 font-bold' : ''}>Password must contain at least 6 characters</span>, <span className={err === 'upper' ? 'text-red-600 font-bold' : ''}>including uppercase </span > and <span className={err === 'lower' ? 'text-red-600 font-bold' : ''}>lowercase letters.</span>
                         </p>
                     </div>
 

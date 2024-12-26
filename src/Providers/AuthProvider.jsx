@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,  signInWithEmailAndPassword,  signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.init";
+import axios from "axios";
 
 export const contextProvider = createContext()
 
@@ -13,20 +15,26 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         setLoading(true);
-        onAuthStateChanged(auth, currentUser =>{
-            if(currentUser)
-            {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (currentUser) {
                 setUser(currentUser);
-                setLoading(false);
+                const tokenGenerate  = async() => {
+                    const {data} = await axios.post(`${import.meta.env.VITE_url}/jwt`,currentUser.email,{withCredentials: true})
+                }
+                tokenGenerate();
+            } else {
+                setUser(null);
+                const tokenClear  = async() => {
+                    const {data} = await axios.post(`${import.meta.env.VITE_url}/logout`,{},{withCredentials: true})
+                }
+                tokenClear();
             }
-            else
-            {
-                setUser([]);
-                setLoading(false);
-            }
-
-        })
-    },[])
+            setLoading(false); 
+        });
+    
+        return () => unsubscribe();
+    }, []);
+    
     console.log(user, loading);
 
     const googleLogin = () => {

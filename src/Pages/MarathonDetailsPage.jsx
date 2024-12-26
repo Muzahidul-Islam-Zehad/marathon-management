@@ -153,7 +153,7 @@ const MarathonDetailsPage = () => {
                                     <span className="label-text">Marathon Start Date</span>
                                 </label>
                                 <input
-                                    defaultValue={formatDateToYYYYMMDD(startDate)}
+                                    defaultValue={(startDate)}
                                     type="text"
                                     name="startDate"
                                     className="input input-bordered w-full"

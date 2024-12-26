@@ -10,7 +10,7 @@ const MyApplyList = () => {
     const [myApply, setMyApply] = useState([]);
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-marathon?email=${user.email}`)
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}`)
             setMyApply(data);
         }
         fethcing()
@@ -22,10 +22,30 @@ const MyApplyList = () => {
         const newMyApply = myApply.filter(a => a._id !== id);
         setMyApply(newMyApply);
     }
+    const handleSearch = async(e) =>{
+        const search = e.target.value;
+
+        const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}&search=${search}`);
+
+        setMyApply(data);
+    }
 
     return (
         <div className="max-w-7xl mx-auto p-6">
             <h2 className="text-2xl font-bold mb-6">My Applied Marathons</h2>
+            <label className="input input-bordered flex items-center gap-2 my-2 w-80">
+                <input type="text" onChange={handleSearch} className="grow" placeholder="Search" />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    className="h-4 w-4 opacity-70">
+                    <path
+                        fillRule="evenodd"
+                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                        clipRule="evenodd" />
+                </svg>
+            </label>
 
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-200">

@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
+import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 
 const MarathonDetailsPage = () => {
     const {user} = useContext(contextProvider);
     const { id } = useParams();
     const [marathon, setMarathon] = useState({});
     const [openForm, setOpenForm] = useState(false);
+    
 
     useEffect(() => {
         const fethcing = async () => {
@@ -85,11 +87,11 @@ const MarathonDetailsPage = () => {
                         <span className="font-semibold">Location:</span> {location}
                     </p>
                     <p className="text-lg mb-2">
-                        <span className="font-semibold">Start Date:</span> {startDate}
+                        <span className="font-semibold">Start Date:</span> {formatDateToYYYYMMDD(startDate)}
                     </p>
                     <p className="text-lg mb-2">
                         <span className="font-semibold">Registration Period:</span>{" "}
-                        {startRegistration} - {endRegistration}
+                        {formatDateToYYYYMMDD(startRegistration)} - {formatDateToYYYYMMDD(endRegistration)}
                     </p>
                     <p className="text-lg mb-2">
                         <span className="font-semibold">Total Registrations:</span>{" "}
@@ -151,7 +153,7 @@ const MarathonDetailsPage = () => {
                                     <span className="label-text">Marathon Start Date</span>
                                 </label>
                                 <input
-                                    defaultValue={startDate}
+                                    defaultValue={formatDateToYYYYMMDD(startDate)}
                                     type="text"
                                     name="startDate"
                                     className="input input-bordered w-full"

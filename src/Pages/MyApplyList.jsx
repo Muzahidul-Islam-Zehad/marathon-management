@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 
 const MyApplyList = () => {
     const { user } = useContext(contextProvider);
@@ -43,7 +44,7 @@ const MyApplyList = () => {
                             myApply?.map((apply, idx) => <tr key={apply._id}>
                                 <td className="border border-gray-300 px-4 py-2 text-center">{idx + 1}</td>
                                 <td className="border border-gray-300 px-4 py-2">{apply.title}</td>
-                                <td className="border border-gray-300 px-4 py-2 text-center">{apply.startDate}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{formatDateToYYYYMMDD(apply.startDate)}</td>
                                 <td className="border flex flex-col md:flex-row gap-2 justify-center items-center border-gray-300 px-4 py-2 text-center space-x-2">
                                     <Link to={`/dashboard/my-apply-list/update/${apply._id}`}>
                                         <button

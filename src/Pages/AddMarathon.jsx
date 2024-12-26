@@ -1,12 +1,14 @@
 import axios from "axios";
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { contextProvider } from "../Providers/AuthProvider";
 
 const AddMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
     const [endRegistration, setEndRegistration] = useState(null);
     const [startDate, setStartDate] = useState(null);
+    const {user} = useContext(contextProvider); 
 
     const handleAddMarathon = async e => {
         e.preventDefault();
@@ -29,6 +31,8 @@ const AddMarathon = () => {
             image,
             createdAt: new Date(),
             totalRegistrationCount: 0,
+            email: user.email
+            
         };
 
         console.log(addMarathonData);

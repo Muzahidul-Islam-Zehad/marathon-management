@@ -1,6 +1,21 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
+    const location = useLocation();
+    const link = <>
+        <li className={`font-bold text-lg`}>
+            <p className="text-2xl font-bold">Dashboard</p>
+        </li>
+        <li className={`${location.pathname === '/dashboard' && 'bg-blue-600 text-white rounded-lg'}`}>
+            <Link to="/dashboard">Add Marathon</Link>
+        </li>
+        <li className={`${location.pathname === '/dashboard/my-marathon-list' && 'bg-blue-600 text-white rounded-lg'}`}>
+            <Link to="/dashboard/my-marathon-list">My Marathon List</Link>
+        </li>
+        <li className={`${location.pathname === '/dashboard/my-apply-list' && 'bg-blue-600 text-white rounded-lg'}`}>
+            <Link to="/dashboard/my-apply-list" >My Apply List</Link>
+        </li>
+    </>
     return (
         <div>
             {/* Dropdown Menu for small devices */}
@@ -10,18 +25,7 @@ const Dashboard = () => {
                         Open Menu
                     </label>
                     <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52">
-                        <li className="font-bold text-lg">
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">Add Marathon</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/my-marathon-list">My Marathon List</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/my-apply-list">My Apply List</Link>
-                        </li>
+                        {link}
                     </ul>
                 </div>
             </div>
@@ -30,18 +34,7 @@ const Dashboard = () => {
                 {/* Sidebar for medium and larger devices */}
                 <div className="hidden md:block w-3/12 bg-base-200 min-h-screen p-4">
                     <ul className="menu text-base-content">
-                        <li className="font-bold text-lg">
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">Add Marathon</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/my-marathon-list">My Marathon List</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard/my-apply-list">My Apply List</Link>
-                        </li>
+                        {link}
                     </ul>
                 </div>
                 {/* Main content area */}

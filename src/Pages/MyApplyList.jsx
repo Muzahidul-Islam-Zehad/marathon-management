@@ -24,6 +24,7 @@ const MyApplyList = () => {
         const { data } = await axios.delete(`${import.meta.env.VITE_url}/applied-marathons/${id}?marathonId=${marathonId}`,);
         const newMyApply = myApply.filter(a => a._id !== id);
         setMyApply(newMyApply);
+        console.log('from delete');
     }
     const handleSearch = async (e) => {
         const search = e.target.value;

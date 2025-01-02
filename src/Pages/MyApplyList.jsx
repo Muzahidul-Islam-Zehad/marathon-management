@@ -25,7 +25,7 @@ const MyApplyList = () => {
     const handleSearch = async(e) =>{
         const search = e.target.value;
 
-        const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}&search=${search}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}&search=${search}`,{withCredentials: true});
 
         setMyApply(data);
     }

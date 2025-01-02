@@ -8,8 +8,17 @@ const Marathons = () => {
 
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons?uEmail=${user.email}`, { withCredentials: true })
-            setMarathons(data);
+            try{
+
+                const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons?uEmail=${user.email}`, { withCredentials: true })
+                setMarathons(data);
+            }
+            catch(e) 
+            {
+                setMarathons([]);
+                console.log(e);
+            }
+            
         }
         fethcing()
     }, [setMarathons, user.email])

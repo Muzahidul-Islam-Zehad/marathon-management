@@ -13,13 +13,13 @@ const Home = () => {
 
   useEffect(() => {
     const fethcing = async () => {
-        const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/limited`,)
-        setLimited(data);
+      const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/limited`,)
+      setLimited(data);
     }
     fethcing()
-}, [setLimited])
+  }, [setLimited])
   return (
-    <div>
+    <div className="w-11/12 mx-auto my-6">
       {/* Banner Section */}
       <div className="banner-section">
         <Swiper
@@ -32,25 +32,31 @@ const Home = () => {
           className="w-full h-[400px]"
         >
           <SwiperSlide>
-            <div className="flex items-center justify-center bg-blue-500 h-full text-white text-2xl">
-              Slide 1: Upcoming Marathon Highlights
+            <div className="flex items-end justify-start h-full text-white text-2xl bg-[url('https://i.ibb.co.com/Tw2QwP4/banner-1.jpg')] bg-no-repeat bg-cover bg-center">
+              <div className="p-4 ">
+                <p className="text-3xl font-bold">Explore The Exclusive Events</p>
+              </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex items-center justify-center bg-green-500 h-full text-white text-2xl">
-              Slide 2: Register Now for Exclusive Events
+            <div className="flex items-end justify-start  h-full text-white text-2xl bg-[url('https://i.ibb.co.com/5RQqRq5/banner-2.jpg')] bg-no-repeat bg-cover bg-center">
+              <div className="p-4 ">
+                <p className="text-3xl font-bold">Register Now for Exclusive Events</p>
+              </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex items-center justify-center bg-red-500 h-full text-white text-2xl">
-              Slide 3: Don&apos;t Miss Out on the Fun!
+            <div className="flex items-end justify-start h-full text-white text-2xl bg-[url('https://i.ibb.co.com/YhDg3Dq/banner-3.jpg')] bg-no-repeat bg-cover bg-center">
+              <div className="p-4 ">
+                <p className="text-3xl font-bold">Don&apos;t Miss Out on the Fun!</p>
+              </div>
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
 
-      <div>
-      <h1 className="text-3xl font-bold text-center my-6">New Marathons</h1>
+      <div className="">
+        <h1 className="text-3xl font-bold text-center my-6">New Marathons</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
           {
             limited.map(l => <MarathonCard key={l._id} marathon={l}></MarathonCard>)

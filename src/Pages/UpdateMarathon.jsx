@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { contextProvider } from "../Providers/AuthProvider";
 
 const UpdateMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
@@ -11,17 +12,18 @@ const UpdateMarathon = () => {
     const { id } = useParams();
     const [update, setUpdate] = useState({});
     const navigate = useNavigate();
+    const {user} = useContext(contextProvider);
 
     useEffect(() => {
         const fetching = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/${id}`);
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/${id}?email=${user.email}`, {withCredentials: true});
             setUpdate(data);
             setStartRegistration(new Date(data.startRegistration)); 
             setEndRegistration(new Date(data.endRegistration));     
             setStartDate(new Date(data.startDate));                 
         };
         fetching();
-    }, [id]);
+    }, [id, user.email]);
     
 
     const handleUpdateMarathon = async(e) => {
@@ -62,7 +64,7 @@ const UpdateMarathon = () => {
                             <span className="label-text">Title</span>
                         </label>
                         <input
-                            defaultValue={update.title}
+                            defaultValue={update?.title}
                             type="text"
                             name="title"
                             placeholder="Enter marathon title"
@@ -121,7 +123,7 @@ const UpdateMarathon = () => {
                             <select
                                 className="select select-bordered w-full"
                                 name="distance"
-                                defaultValue={update.distance}
+                                defaultValue={update?.distance}
                             >
                                 <option disabled>Select distance</option>
                                 <option>25k</option>
@@ -137,7 +139,7 @@ const UpdateMarathon = () => {
                             <span className="label-text">Location</span>
                         </label>
                         <input
-                            defaultValue={update.location}
+                            defaultValue={update?.location}
                             type="text"
                             name="location"
                             placeholder="Enter location"
@@ -151,7 +153,7 @@ const UpdateMarathon = () => {
                             <span className="label-text">Description</span>
                         </label>
                         <textarea
-                            defaultValue={update.description}
+                            defaultValue={update?.description}
                             className="textarea textarea-bordered w-full"
                             name="description"
                             placeholder="Enter a description of the marathon"
@@ -164,7 +166,7 @@ const UpdateMarathon = () => {
                             <span className="label-text">Marathon Image URL</span>
                         </label>
                         <input
-                            defaultValue={update.image}
+                            defaultValue={update?.image}
                             type="url"
                             name="image"
                             placeholder="Enter image URL"

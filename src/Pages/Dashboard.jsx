@@ -24,7 +24,7 @@ const Dashboard = () => {
                     <label tabIndex={0} className="btn btn-primary m-4">
                         Open Menu
                     </label>
-                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-52 z-10">
                         {link}
                     </ul>
                 </div>

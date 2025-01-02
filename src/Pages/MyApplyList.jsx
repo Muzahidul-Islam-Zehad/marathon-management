@@ -3,8 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 const MyApplyList = () => {
     const { user } = useContext(contextProvider);
@@ -100,7 +101,7 @@ const MyApplyList = () => {
                                         {apply.title}
                                     </td>
                                     <td className="border border-gray-300 px-4 py-2 text-center">
-                                        {formatDateToYYYYMMDD(apply.startDate)}
+                                        {format(apply.startDate, "P", {locale: fr})}
                                     </td>
                                     <td className="border flex flex-col md:flex-row gap-2 justify-center items-center border-gray-300 px-4 py-2 text-center md:space-x-2">
                                         <Link to={`/dashboard/my-apply-list/update/${apply._id}`}>

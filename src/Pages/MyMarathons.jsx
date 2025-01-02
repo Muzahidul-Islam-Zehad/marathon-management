@@ -5,6 +5,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { fr } from "date-fns/locale";
 
 const MyMarathonsList = () => {
     const { user } = useContext(contextProvider);
@@ -79,7 +80,7 @@ const MyMarathonsList = () => {
                                     <td className="border border-gray-300 px-4 py-2">{marathon.title}</td>
                                     <td className="border border-gray-300 px-4 py-2">{marathon.location}</td>
                                     <td className="border border-gray-300 px-4 py-2">
-                                        {format(new Date(marathon?.startDate), "yyyy/MM/dd")}
+                                        {format(marathon?.startDate, "P", {locale: fr})}
                                     </td>
                                     <td className="border border-gray-300 px-4 py-2">
                                         {marathon.totalRegistrationCount}

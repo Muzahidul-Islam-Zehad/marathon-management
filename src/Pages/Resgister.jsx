@@ -50,6 +50,7 @@ const RegisterPage = () => {
                                 setUser({ ...user });
                                 form.reset();
                                 setLoading(false);
+                                
                                 navigate('/');
 
                             })
@@ -71,6 +72,7 @@ const RegisterPage = () => {
         googleLogin()
             .then(res => {
                 setUser(res.user);
+                navigate('/')
             })
             .catch(err => console.log(err));
     }

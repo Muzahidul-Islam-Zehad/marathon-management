@@ -20,6 +20,7 @@ const LoginPage = () => {
         loginWithEmailAndPass(email, password)
         .then(res => {
             setUser(res.user);
+            navigate('/');
         })
     };
 

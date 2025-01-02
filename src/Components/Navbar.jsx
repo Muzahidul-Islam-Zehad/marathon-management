@@ -31,7 +31,7 @@ const Navbar = () => {
                     <NavLink
                         to="/marathons"
                         className={({ isActive }) =>
-                            ` ${user?.email? 'block':'hidden'} px-2 md:px-3 py-1 md:py-2 rounded-lg text-sm md:text-base ${isActive ? "bg-primary text-white" : "text-neutral"
+                            ` px-2 md:px-3 py-1 md:py-2 rounded-lg text-sm md:text-base ${isActive ? "bg-primary text-white" : "text-neutral"
                             }`
                         
                         }

@@ -12,6 +12,7 @@ import MyApplyList from "../Pages/MyApplyList";
 import MarathonDetails from "../Pages/MarathonDetailsPage";
 import UpdateApply from "../Pages/UpdateApply";
 import UpdateMarathon from "../Pages/UpdateMarathon";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -67,8 +68,13 @@ const router = createBrowserRouter([
                 path: '/dashboard/my-marathon-list/update/:id',
                 element:<PrivateRoute><UpdateMarathon></UpdateMarathon></PrivateRoute>
             }
-        ]
+        ],
+        
     },
+    {
+        path:'*',
+        element: <ErrorPage></ErrorPage>
+    }
 ])
 
 export default router;

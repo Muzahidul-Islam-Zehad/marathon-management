@@ -283,6 +283,7 @@ const MarathonDetailsPage = () => {
                                     name="additionalInfo"
                                     className="textarea textarea-bordered w-full"
                                     placeholder="Provide any additional details"
+                                    required
                                 ></textarea>
                             </div>
 

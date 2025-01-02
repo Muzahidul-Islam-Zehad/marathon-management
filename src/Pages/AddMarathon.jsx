@@ -67,6 +67,7 @@ const AddMarathon = () => {
                         name="title"
                         placeholder="Enter marathon title"
                         className="input input-bordered w-full"
+                        required
                     />
                 </div>
 
@@ -82,6 +83,7 @@ const AddMarathon = () => {
                             onChange={(date) => setStartRegistration(date)}
                             className="input input-bordered w-full"
                             placeholderText="Select start date"
+                            required
                         />
                     </div>
 
@@ -95,6 +97,7 @@ const AddMarathon = () => {
                             onChange={(date) => setEndRegistration(date)}
                             className="input input-bordered w-full"
                             placeholderText="Select end date"
+                            required
                         />
                     </div>
 
@@ -108,6 +111,7 @@ const AddMarathon = () => {
                             onChange={(date) => setStartDate(date)}
                             className="input input-bordered w-full"
                             placeholderText="Select start date"
+                            required
                         />
                     </div>
 
@@ -120,6 +124,7 @@ const AddMarathon = () => {
                             className="select select-bordered w-full"
                             name="distance"
                             defaultValue='Select distance'
+                            required
                         >
                             <option disabled>Select distance</option>
                             <option>25k</option>
@@ -139,6 +144,7 @@ const AddMarathon = () => {
                         name="location"
                         placeholder="Enter location"
                         className="input input-bordered w-full"
+                        required
                     />
                 </div>
 
@@ -151,6 +157,7 @@ const AddMarathon = () => {
                         className="textarea textarea-bordered w-full"
                         name="description"
                         placeholder="Enter a description of the marathon"
+                        required
                     ></textarea>
                 </div>
 
@@ -164,6 +171,7 @@ const AddMarathon = () => {
                         name="image"
                         placeholder="Enter image URL"
                         className="input input-bordered w-full"
+                        required
                     />
                 </div>
 

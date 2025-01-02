@@ -120,6 +120,7 @@ const UpdateApply = () => {
                                     name="firstName"
                                     className="input input-bordered w-full"
                                     placeholder="Enter your first name"
+                                    required
                                 />
                             </div>
 
@@ -134,6 +135,7 @@ const UpdateApply = () => {
                                     name="lastName"
                                     className="input input-bordered w-full"
                                     placeholder="Enter your last name"
+                                    required
                                 />
                             </div>
 
@@ -148,6 +150,7 @@ const UpdateApply = () => {
                                     name="contactNumber"
                                     className="input input-bordered w-full"
                                     placeholder="Enter your contact number"
+                                    required
                                 />
                             </div>
 
@@ -161,6 +164,7 @@ const UpdateApply = () => {
                                     name="additionalInfo"
                                     className="textarea textarea-bordered w-full"
                                     placeholder="Provide any additional details"
+                                    required
                                 ></textarea>
                             </div>
 

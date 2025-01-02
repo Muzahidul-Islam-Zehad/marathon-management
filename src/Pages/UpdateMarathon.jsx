@@ -88,6 +88,7 @@ const UpdateMarathon = () => {
                                     name="title"
                                     placeholder="Enter marathon title"
                                     className="input input-bordered w-full"
+                                    required
                                 />
                             </div>
 
@@ -104,6 +105,7 @@ const UpdateMarathon = () => {
                                         onChange={(date) => setStartRegistration(date)}
                                         className="input input-bordered w-full"
                                         placeholderText="Select start date"
+                                        required
                                     />
                                 </div>
 
@@ -118,6 +120,7 @@ const UpdateMarathon = () => {
                                         onChange={(date) => setEndRegistration(date)}
                                         className="input input-bordered w-full"
                                         placeholderText="Select end date"
+                                        required
                                     />
                                 </div>
 
@@ -131,6 +134,7 @@ const UpdateMarathon = () => {
                                         onChange={(date) => setStartDate(date)}
                                         className="input input-bordered w-full"
                                         placeholderText="Select start date"
+                                        required
                                     />
                                 </div>
 
@@ -143,6 +147,7 @@ const UpdateMarathon = () => {
                                         className="select select-bordered w-full"
                                         name="distance"
                                         defaultValue={update?.distance}
+                                        required
                                     >
                                         <option disabled>Select distance</option>
                                         <option>25k</option>
@@ -163,6 +168,7 @@ const UpdateMarathon = () => {
                                     name="location"
                                     placeholder="Enter location"
                                     className="input input-bordered w-full"
+                                    required
                                 />
                             </div>
 
@@ -176,6 +182,7 @@ const UpdateMarathon = () => {
                                     className="textarea textarea-bordered w-full"
                                     name="description"
                                     placeholder="Enter a description of the marathon"
+                                    required
                                 ></textarea>
                             </div>
 
@@ -190,6 +197,7 @@ const UpdateMarathon = () => {
                                     name="image"
                                     placeholder="Enter image URL"
                                     className="input input-bordered w-full"
+                                    required
                                 />
                             </div>
 

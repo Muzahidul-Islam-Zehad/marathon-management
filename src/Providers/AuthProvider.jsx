@@ -35,7 +35,7 @@ const AuthProvider = ({children}) => {
         return () => unsubscribe();
     }, []);
     
-    console.log(user, loading);
+    // console.log(user, loading);
 
     const googleLogin = () => {
         setLoading(true);

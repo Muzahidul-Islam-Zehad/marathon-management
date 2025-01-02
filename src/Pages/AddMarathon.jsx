@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { contextProvider } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 const AddMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
@@ -80,7 +82,7 @@ const AddMarathon = () => {
                         </label>
                         <DatePicker
                             selected={startRegistration}
-                            onChange={(date) => setStartRegistration(date)}
+                            onChange={(date) => setStartRegistration(format(date, "P" , {locale: fr}))}
                             className="input input-bordered w-full"
                             placeholderText="Select start date"
                             required
@@ -94,7 +96,7 @@ const AddMarathon = () => {
                         </label>
                         <DatePicker
                             selected={endRegistration}
-                            onChange={(date) => setEndRegistration(date)}
+                            onChange={(date) => setEndRegistration(format(date, "P" , {locale: fr}))}
                             className="input input-bordered w-full"
                             placeholderText="Select end date"
                             required
@@ -108,7 +110,7 @@ const AddMarathon = () => {
                         </label>
                         <DatePicker
                             selected={startDate}
-                            onChange={(date) => setStartDate(date)}
+                            onChange={(date) => setStartDate(format(date, "P" , {locale: fr}))}
                             className="input input-bordered w-full"
                             placeholderText="Select start date"
                             required

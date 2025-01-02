@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 const MarathonCard = ({ marathon }) => {
 
     return (
@@ -13,7 +14,7 @@ const MarathonCard = ({ marathon }) => {
                 <h3 className="text-lg font-bold mb-2">{marathon.title}</h3>
                 <p className="text-sm mb-4">Location: {marathon.location}</p>
                 <p className="text-sm mb-4">
-                    Registration: {formatDateToYYYYMMDD(marathon.startRegistration)} - {formatDateToYYYYMMDD(marathon.endRegistration)}
+                    Registration: {format(marathon?.startRegistration , "P" ,{locale: fr })} - {format(marathon?.endRegistration , "P" , {locale: fr})}
                 </p>
             </div>
 

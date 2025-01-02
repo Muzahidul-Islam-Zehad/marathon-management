@@ -3,8 +3,9 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { contextProvider } from "../Providers/AuthProvider";
-import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 import Swal from "sweetalert2";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 const MarathonDetailsPage = () => {
     const { user } = useContext(contextProvider);
@@ -100,12 +101,12 @@ const MarathonDetailsPage = () => {
                         </p>
                         <p className="text-lg mb-2">
                             <span className="font-semibold">Start Date:</span>{" "}
-                            {formatDateToYYYYMMDD(startDate)}
+                            {format(startDate, "P", {locale: fr})}
                         </p>
                         <p className="text-lg mb-2">
                             <span className="font-semibold">Registration Period:</span>{" "}
-                            {formatDateToYYYYMMDD(startRegistration)} -{" "}
-                            {formatDateToYYYYMMDD(endRegistration)}
+                            {format(startRegistration, "P", {locale: fr})}{' - '}
+                            {format(endRegistration, "P", {locale: fr})}
                         </p>
                         <p className="text-lg mb-2">
                             <span className="font-semibold">Total Registrations:</span>{" "}
@@ -223,7 +224,7 @@ const MarathonDetailsPage = () => {
                                     <span className="label-text">Marathon Start Date</span>
                                 </label>
                                 <input
-                                    defaultValue={(startDate)}
+                                    defaultValue={format(startDate, "P", {locale: fr})}
                                     type="text"
                                     name="startDate"
                                     className="input input-bordered w-full"

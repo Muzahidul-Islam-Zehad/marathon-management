@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import { useAsyncError, useNavigate, useParams } from "react-router-dom";
 import { contextProvider } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const UpdateMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
@@ -52,6 +53,13 @@ const UpdateMarathon = () => {
 
         const { data } = await axios.patch(`${import.meta.env.VITE_url}/marathons/${id}`, updateMarathonData);
         navigate('/dashboard/my-marathon-list');
+        if (data.acknowledged) {
+            Swal.fire({
+                title: "Update Successful!",
+                text: "You have updated your marathon.",
+                icon: "success"
+            });
+        }
 
     }
 

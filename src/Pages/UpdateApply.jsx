@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateApply = () => {
     const { user } = useContext(contextProvider);
@@ -39,7 +40,13 @@ const UpdateApply = () => {
 
         console.log(submittionData);
         const { data } = await axios.put(`${import.meta.env.VITE_url}/applied-marathons/${id}`, submittionData);
-        console.log(data);
+        if (data.acknowledged) {
+            Swal.fire({
+                title: "Update Successful!",
+                text: "You have updated your marathon apply.",
+                icon: "success"
+            });
+        }
         navigate('/dashboard/my-apply-list');
 
     }

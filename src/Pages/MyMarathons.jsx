@@ -4,6 +4,7 @@ import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyMarathonsList = () => {
     const { user } = useContext(contextProvider);
@@ -23,10 +24,30 @@ const MyMarathonsList = () => {
         fetching();
     }, [user.email]);
 
-    const handleDelete = async (id) => {
-        await axios.delete(`${import.meta.env.VITE_url}/marathons/${id}`);
-        const newMyMarathon = myMarathon.filter((m) => m._id !== id);
-        setMyMarathon(newMyMarathon);
+    const handleDelete =(id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                await axios.delete(`${import.meta.env.VITE_url}/marathons/${id}`);
+                const newMyMarathon = myMarathon.filter((m) => m._id !== id);
+                setMyMarathon(newMyMarathon);
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your marathon has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+
     };
 
     return (

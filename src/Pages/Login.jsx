@@ -1,16 +1,20 @@
 
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../Providers/AuthProvider';
+import toast from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    const [err,setErr] = useState(null);
 
 
     const {setUser, googleLogin, loginWithEmailAndPass} = useContext(contextProvider);
 
     const handleLogin = (e) => {
         e.preventDefault();
+        setErr(null);
         // Add authentication logic here
         const form = e.target;
 
@@ -21,6 +25,18 @@ const LoginPage = () => {
         .then(res => {
             setUser(res.user);
             navigate('/');
+            toast.success('Login Successful',{
+                style: {
+                    background: 'green',
+                    color: 'white',
+                }
+            });
+        })
+        .catch(err => {
+            if(err)
+            {
+                setErr('Invalid Username or Password');
+            }
         })
     };
 
@@ -29,6 +45,12 @@ const LoginPage = () => {
         .then(res => {
             setUser(res.user);
             navigate('/');
+            toast.success('Login Successful',{
+                style: {
+                    background: 'green',
+                    color: 'white',
+                }
+            });
         })
         .catch(err => console.log(err));
     }
@@ -66,6 +88,11 @@ const LoginPage = () => {
                         />
                     </div>
 
+                    {
+                        err && <div className='text-red-600'>{err}</div>
+
+                    }
+
                     {/* Login Button */}
                     <button
                         type="submit"
@@ -77,7 +104,7 @@ const LoginPage = () => {
 
                 {/* Social Login */}
                 <div className="mt-6 flex justify-center space-x-4">
-                    <button onClick={handleGoogleLogin} className="w-full btn btn-outline btn-primary">Login with Google</button>
+                    <button onClick={handleGoogleLogin} className="w-full btn btn-outline btn-primary">Continue with Google <span className='text-2xl'><FcGoogle /></span></button>
                     {/* You can replace Google button with GitHub or both */}
                     {/* <button className="w-full btn btn-outline btn-secondary">Login with GitHub</button> */}
                 </div>

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { contextProvider } from "../Providers/AuthProvider";
 import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
+import Swal from "sweetalert2";
 
 const MarathonDetailsPage = () => {
     const { user } = useContext(contextProvider);
@@ -69,6 +70,11 @@ const MarathonDetailsPage = () => {
         );
         if (data.acknowledged) {
             navigate("/dashboard/my-apply-list");
+            Swal.fire({
+                title: "Register Successful!",
+                text: "You have registered for this marathon.",
+                icon: "success"
+            });
         }
     };
 
@@ -109,14 +115,17 @@ const MarathonDetailsPage = () => {
                             <span className="font-semibold">Description:</span> {description}
                         </p>
 
-                        <button
-                            className={`btn w-full sm:w-auto ${isRegistrationOpen() ? "btn-primary" : "btn-disabled"
-                                }`}
-                            disabled={!isRegistrationOpen()}
-                            onClick={() => setOpenForm(true)}
-                        >
-                            Register Now
-                        </button>
+                        <a href="#reg-form">
+                            <button
+                                className={`btn w-full sm:w-auto ${isRegistrationOpen() ? "btn-primary" : "btn-disabled"
+                                    }`}
+                                disabled={!isRegistrationOpen()}
+                                onClick={() => setOpenForm(true)}
+                            >
+                                Register Now
+                            </button>
+
+                        </a>
 
                         {/* Countdown Timer */}
                         {isRegistrationOpen() && (
@@ -172,6 +181,7 @@ const MarathonDetailsPage = () => {
 
                     {/* Right: Registration Form */}
                     <div
+                        id="reg-form"
                         className={`bg-white shadow-lg w-full rounded-lg p-6 ${openForm ? "block" : "hidden"
                             }`}
                     >

@@ -3,12 +3,15 @@ import {  useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { contextProvider } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
     const [endRegistration, setEndRegistration] = useState(null);
     const [startDate, setStartDate] = useState(null);
     const {user} = useContext(contextProvider); 
+    const navigate = useNavigate();
 
     const handleAddMarathon = async e => {
         e.preventDefault();
@@ -37,7 +40,16 @@ const AddMarathon = () => {
 
 
         const {data} = await axios.post(`${import.meta.env.VITE_url}/marathons/?uEmail=${user.email}`, addMarathonData, {withCredentials: true})
-        console.log(data);
+        if(data.acknowledged)
+        {
+            Swal.fire({
+                title: "Marathon Added!",
+                text: "Your marathon has been added.",
+                icon: "success"
+              });
+
+            navigate('/dashboard/my-marathon-list');
+        }
     };
 
     return (

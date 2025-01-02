@@ -2,6 +2,8 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../Providers/AuthProvider';
+import toast from 'react-hot-toast';
+import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
 
@@ -50,8 +52,14 @@ const RegisterPage = () => {
                                 setUser({ ...user });
                                 form.reset();
                                 setLoading(false);
-                                
+
                                 navigate('/');
+                                toast.success('Login Successful', {
+                                    style: {
+                                        background: 'green',
+                                        color: 'white',
+                                    }
+                                });
 
                             })
                             .catch((reloadError) => {
@@ -72,7 +80,13 @@ const RegisterPage = () => {
         googleLogin()
             .then(res => {
                 setUser(res.user);
-                navigate('/')
+                navigate('/');
+                toast.success('Login Successful',{
+                    style: {
+                        background: 'green',
+                        color: 'white',
+                    }
+                });
             })
             .catch(err => console.log(err));
     }
@@ -149,7 +163,7 @@ const RegisterPage = () => {
                     </button>
                 </form>
                 <div className="mt-6 flex justify-center space-x-4">
-                    <button onClick={handleGoogleLogin} className="w-full btn btn-outline btn-primary">Register with Google</button>
+                    <button onClick={handleGoogleLogin} className="w-full btn btn-outline btn-primary">Continue with Google  <span className='text-2xl'><FcGoogle /></span></button>
                     {/* You can replace Google button with GitHub or both */}
                     {/* <button className="w-full btn btn-outline btn-secondary">Login with GitHub</button> */}
                 </div>

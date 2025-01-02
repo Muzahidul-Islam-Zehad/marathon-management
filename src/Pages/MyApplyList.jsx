@@ -4,6 +4,7 @@ import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
+import Swal from "sweetalert2";
 
 const MyApplyList = () => {
     const { user } = useContext(contextProvider);
@@ -20,10 +21,28 @@ const MyApplyList = () => {
         fethcing();
     }, [setMyApply, user.email]);
 
-    const handleDelete = async (id, marathonId) => {
-        const { data } = await axios.delete(`${import.meta.env.VITE_url}/applied-marathons/${id}?marathonId=${marathonId}`);
-        const newMyApply = myApply.filter(a => a._id !== id);
-        setMyApply(newMyApply);
+    const handleDelete =(id, marathonId) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then(async(result) => {
+            if (result.isConfirmed) {
+                const { data } = await axios.delete(`${import.meta.env.VITE_url}/applied-marathons/${id}?marathonId=${marathonId}`);
+                const newMyApply = myApply.filter(a => a._id !== id);
+                setMyApply(newMyApply);
+
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your apply has been deleted.",
+                icon: "success"
+              });
+            }
+          });
     };
 
     const handleSearch = async (e) => {

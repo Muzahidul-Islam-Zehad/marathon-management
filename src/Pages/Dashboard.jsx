@@ -19,7 +19,7 @@ const Dashboard = () => {
     return (
         <div>
             {/* Dropdown Menu for small devices */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-primary m-4">
                         Open Menu
@@ -32,7 +32,7 @@ const Dashboard = () => {
 
             <div className="flex">
                 {/* Sidebar for medium and larger devices */}
-                <div className="hidden md:block w-3/12 bg-base-200 min-h-screen p-4">
+                <div className="hidden lg:block w-3/12 bg-base-200 min-h-screen p-4">
                     <ul className="menu text-base-content">
                         {link}
                     </ul>

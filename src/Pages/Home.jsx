@@ -10,11 +10,14 @@ import MarathonCard from "../Components/MarathonCard";
 
 const Home = () => {
   const [limited, setLimited] = useState([]);
+  const [fetch, setFetch] = useState(true);
 
   useEffect(() => {
     const fethcing = async () => {
+      setFetch(true);
       const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/limited`,)
       setLimited(data);
+      setFetch(false);
     }
     fethcing()
   }, [setLimited])
@@ -57,11 +60,20 @@ const Home = () => {
 
       <div className="">
         <h1 className="text-3xl font-bold text-center my-6">New Marathons</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
-          {
-            limited.map(l => <MarathonCard key={l._id} marathon={l}></MarathonCard>)
-          }
-        </div>
+
+        {
+          fetch ?
+            <div className="flex items-center justify-center w-full">
+              <span className="loading loading-infinity w-20"></span>
+            </div>
+            :
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+              {
+                limited.map(l => <MarathonCard key={l._id} marathon={l}></MarathonCard>)
+              }
+            </div>
+        }
+
       </div>
 
       {/* Upcoming Marathons Section */}

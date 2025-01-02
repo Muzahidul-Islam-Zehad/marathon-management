@@ -8,10 +8,13 @@ import { formatDateToYYYYMMDD } from "../Utils/dateFormater";
 const MyApplyList = () => {
     const { user } = useContext(contextProvider);
     const [myApply, setMyApply] = useState([]);
+    const [fetch, setFetch] = useState(true);
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}`, {withCredentials: true})
+            setFetch(true);
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}`, { withCredentials: true })
             setMyApply(data);
+            setFetch(false);
         }
         fethcing()
     }, [setMyApply, user.email])
@@ -22,10 +25,10 @@ const MyApplyList = () => {
         const newMyApply = myApply.filter(a => a._id !== id);
         setMyApply(newMyApply);
     }
-    const handleSearch = async(e) =>{
+    const handleSearch = async (e) => {
         const search = e.target.value;
 
-        const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}&search=${search}`,{withCredentials: true});
+        const { data } = await axios.get(`${import.meta.env.VITE_url}/my-appliedMarathon?email=${user.email}&search=${search}`, { withCredentials: true });
 
         setMyApply(data);
     }
@@ -57,35 +60,44 @@ const MyApplyList = () => {
                             <th className="border border-gray-300 px-4 py-2">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* Example Row */}
 
-                        {
-                            myApply?.map((apply, idx) => <tr key={apply._id}>
-                                <td className="border border-gray-300 px-4 py-2 text-center">{idx + 1}</td>
-                                <td className="border border-gray-300 px-4 py-2">{apply.title}</td>
-                                <td className="border border-gray-300 px-4 py-2 text-center">{formatDateToYYYYMMDD(apply.startDate)}</td>
-                                <td className="border flex flex-col md:flex-row gap-2 justify-center items-center border-gray-300 px-4 py-2 text-center space-x-2">
-                                    <Link to={`/dashboard/my-apply-list/update/${apply._id}`}>
-                                        <button
-                                            className="btn btn-sm btn-primary w-20"
-                                        >
-                                            Update
-                                        </button>
-                                    </Link>
-                                    <button
-                                        className="btn btn-sm btn-error w-20"
-                                        onClick={() => handleDelete(apply._id, apply.marathonId)}
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
+                    {
+                        fetch
+                            ?
+                            <div className="flex items-center justify-center w-full">
+                                <span className="loading loading-infinity w-20"></span>
+                            </div>
+                            :
+                            <tbody>
+                                {/* Example Row */}
+
+                                {
+                                    myApply?.map((apply, idx) => <tr key={apply._id}>
+                                        <td className="border border-gray-300 px-4 py-2 text-center">{idx + 1}</td>
+                                        <td className="border border-gray-300 px-4 py-2">{apply.title}</td>
+                                        <td className="border border-gray-300 px-4 py-2 text-center">{formatDateToYYYYMMDD(apply.startDate)}</td>
+                                        <td className="border flex flex-col md:flex-row gap-2 justify-center items-center border-gray-300 px-4 py-2 text-center space-x-2">
+                                            <Link to={`/dashboard/my-apply-list/update/${apply._id}`}>
+                                                <button
+                                                    className="btn btn-sm btn-primary w-20"
+                                                >
+                                                    Update
+                                                </button>
+                                            </Link>
+                                            <button
+                                                className="btn btn-sm btn-error w-20"
+                                                onClick={() => handleDelete(apply._id, apply.marathonId)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>)
+                                }
 
 
-                        {/* Additional rows will be dynamically rendered */}
-                    </tbody>
+                                {/* Additional rows will be dynamically rendered */}
+                            </tbody>
+                    }
                 </table>
             </div>
         </div>

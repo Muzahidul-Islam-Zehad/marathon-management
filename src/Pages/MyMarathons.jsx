@@ -9,11 +9,14 @@ import { Link } from "react-router-dom";
 const MyMarathonsList = () => {
     const { user } = useContext(contextProvider);
     const [myMarathon, setMyMarathon] = useState([]);
+    const [fetch, setFetch] = useState(true);
 
     useEffect(() => {
         const fethcing = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/my-marathon?email=${user.email}`, {withCredentials: true})
+            setFetch(true)
+            const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/my-marathon?email=${user.email}`, { withCredentials: true })
             setMyMarathon(data);
+            setFetch(false);
         }
         fethcing()
     }, [user.email])
@@ -41,22 +44,29 @@ const MyMarathonsList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* Static Data Example */}
+                        {/* Dynamin Data */}
+
 
                         {
-                            myMarathon?.map((marathon, idx) => <tr key={marathon._id}>
-                                <td className="border border-gray-300 px-4 py-2">{idx + 1}</td>
-                                <td className="border border-gray-300 px-4 py-2">{marathon.title}</td>
-                                <td className="border border-gray-300 px-4 py-2">{marathon.location}</td>
-                                <td className="border border-gray-300 px-4 py-2">{format(new Date(marathon?.startDate), "yyyy/MM/dd")}</td>
-                                <td className="border border-gray-300 px-4 py-2">{marathon.totalRegistrationCount}</td>
-                                <td className="border border-gray-300 px-4 py-2 flex justify-center gap-2">
-                                    <Link to={`/dashboard/my-marathon-list/update/${marathon._id}`}>
-                                        <button className="btn btn-sm btn-primary">Update</button>
-                                    </Link>
-                                    <button onClick={() => handleDelete(marathon._id)} className="btn btn-sm btn-error">Delete</button>
-                                </td>
-                            </tr>)
+                            fetch
+                                ?
+                                <div className="flex items-center justify-center w-full">
+                                    <span className="loading loading-infinity w-20"></span>
+                                </div>
+                                :
+                                myMarathon?.map((marathon, idx) => <tr key={marathon._id}>
+                                    <td className="border border-gray-300 px-4 py-2">{idx + 1}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{marathon.title}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{marathon.location}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{format(new Date(marathon?.startDate), "yyyy/MM/dd")}</td>
+                                    <td className="border border-gray-300 px-4 py-2">{marathon.totalRegistrationCount}</td>
+                                    <td className="border border-gray-300 px-4 py-2 flex justify-center gap-2">
+                                        <Link to={`/dashboard/my-marathon-list/update/${marathon._id}`}>
+                                            <button className="btn btn-sm btn-primary">Update</button>
+                                        </Link>
+                                        <button onClick={() => handleDelete(marathon._id)} className="btn btn-sm btn-error">Delete</button>
+                                    </td>
+                                </tr>)
                         }
 
 

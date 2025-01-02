@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
+
 import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
@@ -37,12 +36,13 @@ const MyApplyList = () => {
                 const { data } = await axios.delete(`${import.meta.env.VITE_url}/applied-marathons/${id}?marathonId=${marathonId}`);
                 const newMyApply = myApply.filter(a => a._id !== id);
                 setMyApply(newMyApply);
-
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your apply has been deleted.",
-                    icon: "success"
-                });
+                if (data.acknowledged) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your apply has been deleted.",
+                        icon: "success"
+                    });
+                }
             }
         });
     };
@@ -54,28 +54,22 @@ const MyApplyList = () => {
     };
 
 
-    const handleUpdate = async(id) => {
-        try
-        {
+    const handleUpdate = async (id) => {
+        try {
 
             setFetch(true);
             const { data } = await axios.get(`${import.meta.env.VITE_url}/applied-marathons/${id}`)
             setUpdate(data);
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
         }
-        finally
-        {
+        finally {
             setFetch(false);
             document.getElementById('my_modal_5').showModal();
         }
     }
 
-    useEffect(() =>{
-        console.log(update);
-    },[update])
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -93,25 +87,22 @@ const MyApplyList = () => {
             additionalInfo,
             marathonId: update.marathonId
         }
-        
-        try
-        {
-            const { data } = await axios.put(`${import.meta.env.VITE_url}/applied-marathons/${update.marathonId}`, submittionData);
+
+        try {
+            const { data } = await axios.put(`${import.meta.env.VITE_url}/applied-marathons/${update._id}`, submittionData);
             if (data.acknowledged) {
                 Swal.fire({
                     title: "Update Successful!",
                     text: "You have updated your marathon apply.",
                     icon: "success"
                 });
-    
+
             }
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
         }
-        finally
-        {
+        finally {
             document.getElementById('my_modal_5').close();
         }
 
@@ -240,7 +231,7 @@ const MyApplyList = () => {
                                             <span className="label-text">Marathon Start Date</span>
                                         </label>
                                         <input
-                                            defaultValue={update.startDate}
+                                            defaultValue={update?.startDate}
                                             type="text"
                                             name="startDate"
                                             className="input input-bordered w-full"

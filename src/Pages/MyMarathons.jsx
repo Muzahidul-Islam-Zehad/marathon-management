@@ -67,7 +67,7 @@ const MyMarathonsList = () => {
             const { data } = await axios.get(`${import.meta.env.VITE_url}/marathons/${id}`, {
                 withCredentials: true,
             });
-            console.log(data);
+
             setUpdate(data);
             setStartRegistration(new Date(data.startRegistration));
             setEndRegistration(new Date(data.endRegistration));
@@ -81,10 +81,6 @@ const MyMarathonsList = () => {
         }
     };
     
-    useEffect(() => {
-        console.log("Update state changed:", update);
-    }, [update]);
-
 
     const handleUpdateMarathon = async (e) => {
         e.preventDefault();
@@ -119,7 +115,7 @@ const MyMarathonsList = () => {
     };
 
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto mt-6">
             <h1 className="text-2xl font-semibold mb-4">My Marathons</h1>
             {fetch ? (
                 <div className="flex items-center justify-center w-full">

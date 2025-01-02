@@ -38,7 +38,7 @@ const Dashboard = () => {
                     </ul>
                 </div>
                 {/* Main content area */}
-                <div className="flex-1 p-4">
+                <div className="w-11/12 mx-auto">
                     <Outlet />
                 </div>
             </div>

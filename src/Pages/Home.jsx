@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MarathonCard from "../Components/MarathonCard";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [limited, setLimited] = useState([]);
@@ -23,6 +24,9 @@ const Home = () => {
   }, [setLimited])
   return (
     <div className="w-11/12 mx-auto my-6">
+      <Helmet>
+        <title>Home | Marathon Managemnet</title>
+      </Helmet>
       {/* Banner Section */}
       <div className="banner-section">
         <Swiper

@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../Providers/AuthProvider';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
+import { Helmet } from 'react-helmet-async';
 
 const RegisterPage = () => {
 
@@ -93,6 +94,9 @@ const RegisterPage = () => {
 
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-50">
+            <Helmet>
+                <title>Register | Marathon Managemnet</title>
+            </Helmet>
             <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-md">
                 <h2 className="text-2xl font-semibold text-center mb-6">Register</h2>
 

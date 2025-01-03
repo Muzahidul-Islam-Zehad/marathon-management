@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { fr } from "date-fns/locale";
 import DatePicker from "react-datepicker";
+import { Helmet } from "react-helmet-async";
 
 const MyMarathonsList = () => {
     const { user } = useContext(contextProvider);
@@ -75,12 +76,12 @@ const MyMarathonsList = () => {
         } catch (error) {
             console.error("Error fetching marathon for update:", error);
         }
-        finally{
+        finally {
             setFetch(false);
             document.getElementById("my_modal_5").showModal();
         }
     };
-    
+
 
     const handleUpdateMarathon = async (e) => {
         e.preventDefault();
@@ -116,6 +117,10 @@ const MyMarathonsList = () => {
 
     return (
         <div className="w-11/12 mx-auto mt-6">
+
+            <Helmet>
+                <title>My Marathons | Dashboard | Marathon Managemnet</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold mb-4">My Marathons</h1>
             {fetch ? (
                 <div className="flex items-center justify-center w-full">

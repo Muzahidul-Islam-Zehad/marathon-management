@@ -1,16 +1,17 @@
 import axios from "axios";
-import {  useContext, useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { contextProvider } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
     const [endRegistration, setEndRegistration] = useState(null);
     const [startDate, setStartDate] = useState(null);
-    const {user} = useContext(contextProvider); 
+    const { user } = useContext(contextProvider);
     const navigate = useNavigate();
 
     const handleAddMarathon = async e => {
@@ -35,18 +36,17 @@ const AddMarathon = () => {
             createdAt: new Date(),
             totalRegistrationCount: 0,
             email: user.email
-            
+
         };
 
 
-        const {data} = await axios.post(`${import.meta.env.VITE_url}/marathons/?uEmail=${user.email}`, addMarathonData, {withCredentials: true})
-        if(data.acknowledged)
-        {
+        const { data } = await axios.post(`${import.meta.env.VITE_url}/marathons/?uEmail=${user.email}`, addMarathonData, { withCredentials: true })
+        if (data.acknowledged) {
             Swal.fire({
                 title: "Marathon Added!",
                 text: "Your marathon has been added.",
                 icon: "success"
-              });
+            });
 
             navigate('/dashboard/my-marathon-list');
         }
@@ -54,6 +54,11 @@ const AddMarathon = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-lg shadow-md">
+
+            <Helmet>
+                <title>Add Marathon | Dashboard | Marathon Managemnet</title>
+            </Helmet>
+
             <h2 className="text-2xl font-bold text-center mb-6">Create a New Marathon</h2>
 
             <form onSubmit={handleAddMarathon}>

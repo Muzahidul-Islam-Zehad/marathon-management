@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { Helmet } from "react-helmet-async";
 
 const MyApplyList = () => {
     const { user } = useContext(contextProvider);
@@ -110,6 +111,9 @@ const MyApplyList = () => {
 
     return (
         <div className="w-11/12 mx-auto p-6">
+            <Helmet>
+                <title>My Applied Marathon | Dashboard | Marathon Managemnet</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-6">My Applied Marathons</h2>
             <label className="input input-bordered flex items-center gap-2 my-2 w-full sm:w-1/2">
                 <input

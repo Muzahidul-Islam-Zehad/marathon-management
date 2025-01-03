@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../Providers/AuthProvider";
 import axios from "axios";
 import MarathonCard from "../Components/MarathonCard";
+import { Helmet } from "react-helmet-async";
 
 const Marathons = () => {
     const { user, marathons, setMarathons } = useContext(contextProvider);
@@ -29,6 +30,9 @@ const Marathons = () => {
     }
     return (
         <div className="w-11/12 mx-auto">
+            <Helmet>
+                <title>Marathons | Marathon Managemnet</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center my-6">All Marathons</h1>
             <button onClick={handleSort} className="btn bg-blue-600 text-white">Sort by Creation</button>
 

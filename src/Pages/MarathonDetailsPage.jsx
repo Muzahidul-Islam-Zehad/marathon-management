@@ -6,6 +6,7 @@ import { contextProvider } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { Helmet } from "react-helmet-async";
 
 const MarathonDetailsPage = () => {
     const { user } = useContext(contextProvider);
@@ -81,6 +82,9 @@ const MarathonDetailsPage = () => {
 
     return (
         <div className="max-w-7xl mx-auto p-6">
+            <Helmet>
+                <title>Marathon Details | Marathon Managemnet</title>
+            </Helmet>
             {fetch ? (
                 <div className="flex items-center justify-center min-h-screen w-full">
                     <span className="loading loading-infinity w-20"></span>

@@ -1,4 +1,4 @@
-# My Website Name
+# Marathon Management
 
 [Click Here To Visit Live Site](https://marathon-web-app.web.app/)
 

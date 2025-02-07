@@ -88,6 +88,6 @@ npm run dev
 ---
 
 ## 🌐 Live Project & Resources  
-🔗 **Live Site:** [https://marathon-web-app.web.app/](#)   
+🔗 **Live Site:** [https://marathon-web-app.web.app/](https://marathon-web-app.web.app/)   
 
 ---

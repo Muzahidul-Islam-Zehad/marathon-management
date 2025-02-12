@@ -11,7 +11,7 @@ const AddMarathon = () => {
     const [startRegistration, setStartRegistration] = useState(null);
     const [endRegistration, setEndRegistration] = useState(null);
     const [startDate, setStartDate] = useState(null);
-    const { user } = useContext(contextProvider);
+    const { user, isDark } = useContext(contextProvider);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -56,25 +56,25 @@ const AddMarathon = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-lg shadow-md lg:my-10">
+        <div className={`max-w-4xl mx-auto p-6 rounded-lg shadow-md lg:my-10 ${isDark ? 'bg-[#444242]': `bg-base-200`}`}>
 
             <Helmet>
                 <title>Add Marathon | Dashboard | Marathon Managemnet</title>
             </Helmet>
 
-            <h2 className="text-2xl font-bold text-center mb-6 text-primary">Create a New Marathon</h2>
+            <h2 className={`text-2xl font-bold text-center mb-6 ${isDark ? `text-[#d69327]`: `text-primary`}`}>Create a New Marathon</h2>
 
             <form onSubmit={handleAddMarathon}>
                 {/* Marathon Title */}
                 <div className="form-control mb-4 w-full">
                     <label className="label">
-                        <span className="label-text">Marathon Title</span>
+                        <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Title</span>
                     </label>
                     <input
                         type="text"
                         name="title"
                         placeholder="Enter marathon title"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                         required
                     />
                 </div>
@@ -84,12 +84,12 @@ const AddMarathon = () => {
                     {/* Start Registration Date */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Start Registration Date</span>
+                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Start Registration Date</span>
                         </label>
                         <DatePicker
                             selected={startRegistration}
                             onChange={(date) => setStartRegistration(date)}
-                            className="input input-bordered w-full"
+                            className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                             placeholderText="Select start date"
                             required
                         />
@@ -98,12 +98,12 @@ const AddMarathon = () => {
                     {/* End Registration Date */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">End Registration Date</span>
+                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>End Registration Date</span>
                         </label>
                         <DatePicker
                             selected={endRegistration}
                             onChange={(date) => setEndRegistration(date)}
-                            className="input input-bordered w-full"
+                            className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                             placeholderText="Select end date"
                             required
                         />
@@ -112,12 +112,12 @@ const AddMarathon = () => {
                     {/* Marathon Start Date */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Marathon Start Date</span>
+                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Start Date</span>
                         </label>
                         <DatePicker
                             selected={startDate}
                             onChange={(date) => setStartDate(date)}
-                            className="input input-bordered w-full"
+                            className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                             placeholderText="Select start date"
                             required
                         />
@@ -126,10 +126,10 @@ const AddMarathon = () => {
                     {/* Running Distance */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Running Distance</span>
+                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Running Distance</span>
                         </label>
                         <select
-                            className="select select-bordered w-full"
+                            className={`select select-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                             name="distance"
                             defaultValue='Select distance'
                             required
@@ -145,13 +145,13 @@ const AddMarathon = () => {
                 {/* Location */}
                 <div className="form-control mb-4 w-full">
                     <label className="label">
-                        <span className="label-text">Location</span>
+                        <span className={`label-text ${isDark && `text-[#d69327]`}`}>Location</span>
                     </label>
                     <input
                         type="text"
                         name="location"
                         placeholder="Enter location"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                         required
                     />
                 </div>
@@ -159,10 +159,10 @@ const AddMarathon = () => {
                 {/* Description */}
                 <div className="form-control mb-4 w-full">
                     <label className="label">
-                        <span className="label-text">Description</span>
+                        <span className={`label-text ${isDark && `text-[#d69327]`}`}>Description</span>
                     </label>
                     <textarea
-                        className="textarea textarea-bordered w-full"
+                        className={`textarea textarea-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                         name="description"
                         placeholder="Enter a description of the marathon"
                         required
@@ -172,20 +172,20 @@ const AddMarathon = () => {
                 {/* Marathon Image URL */}
                 <div className="form-control mb-4 w-full">
                     <label className="label">
-                        <span className="label-text">Marathon Image URL</span>
+                        <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Image URL</span>
                     </label>
                     <input
                         type="url"
                         name="image"
                         placeholder="Enter image URL"
-                        className="input input-bordered w-full"
+                        className={`input input-bordered w-full ${isDark && `bg-[#282006] text-slate-200`}`}
                         required
                     />
                 </div>
 
                 {/* Submit Button */}
                 <div className="form-control">
-                    <button type="submit" disabled={loading} className={`btn btn-primary w-full`}>Add Marathon</button>
+                    <button type="submit" disabled={loading} className={`btn  ${isDark ? `btn-outline text-[#d69327] bg-[#1e1e1e] hover:bg-[#d69327] hover:text-white`: `btn-primary`}`}>Add Marathon</button>
                 </div>
             </form>
         </div>

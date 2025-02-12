@@ -6,3 +6,7 @@
 html{
     scroll-behavior: smooth;
 }
+
+.masking{
+    background-image: linear-gradient(to top , rgb(0, 0, 0, 1),rgb(0, 0, 0, 0) );
+}

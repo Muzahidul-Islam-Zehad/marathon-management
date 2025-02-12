@@ -41,23 +41,23 @@ const Home = () => {
           className="w-full h-[400px]"
         >
           <SwiperSlide>
-            <div className="flex items-end justify-start h-full text-white text-2xl bg-[url('https://i.ibb.co.com/Tw2QwP4/banner-1.jpg')] bg-no-repeat bg-cover bg-center">
-              <div className="p-4 ">
-                <p className="text-3xl font-bold">Explore The Exclusive Events</p>
+            <div className="flex items-end justify-start h-full text-white text-2xl bg-[url('https://i.ibb.co.com/Tw2QwP4/banner-1.jpg')]  bg-no-repeat bg-cover bg-center">
+              <div className="p-4 w-full masking">
+                <p className={`text-3xl font-bold ${isDark ? `text-[#d69327]` : `text-white`}`}>Explore The Exclusive Events</p>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex items-end justify-start  h-full text-white text-2xl bg-[url('https://i.ibb.co.com/5RQqRq5/banner-2.jpg')] bg-no-repeat bg-cover bg-center">
-              <div className="p-4 ">
-                <p className="text-3xl font-bold">Register Now for Exclusive Events</p>
+              <div className="p-4  w-full masking">
+                <p className={`text-3xl font-bold ${isDark ? `text-[#d69327]` : `text-white`}`}>Register Now for Exclusive Events</p>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex items-end justify-start h-full text-white text-2xl bg-[url('https://i.ibb.co.com/YhDg3Dq/banner-3.jpg')] bg-no-repeat bg-cover bg-center">
-              <div className="p-4 ">
-                <p className="text-3xl font-bold">Don&apos;t Miss Out on the Fun!</p>
+              <div className="p-4  w-full masking">
+                <p className={`text-3xl font-bold ${isDark ? `text-[#d69327]` : `text-white`}`}>Don&apos;t Miss Out on the Fun!</p>
               </div>
             </div>
           </SwiperSlide>
@@ -65,7 +65,7 @@ const Home = () => {
       </div>
 
       <div className="">
-        <h1 className="text-3xl font-bold text-center mt-10 mb-5 text-primary">New Marathons</h1>
+        <h1 className={`text-3xl font-bold text-center mt-10 mb-5 ${isDark ? `text-[#d69327]` : `text-primary`}`}>New Marathons</h1>
 
         {
           fetch ?
@@ -84,7 +84,7 @@ const Home = () => {
 
       {/* Upcoming Marathons Section */}
       <div className="upcoming-marathons-section mt-10">
-        <h2 className="text-3xl font-bold text-center mt-10 mb-5 text-primary">Upcoming Marathons</h2>
+        <h2 className={`text-3xl font-bold text-center mt-10 mb-5 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Upcoming Marathons</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Static Content for Marathon Cards */}
 
@@ -143,8 +143,8 @@ const Home = () => {
       <div className="extra-sections mt-16">
         {/* Extra Section 1 */}
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-center mb-4 text-primary">Why Choose Our Marathons?</h2>
-          <p className="text-center text-gray-700 px-4 md:px-20">
+          <h2 className={`text-3xl font-bold text-center mt-10 mb-5 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Why Choose Our Marathons?</h2>
+          <p className={`text-center px-4 md:px-20 ${isDark ? 'text-white' : 'text-gray-700'}`}>
             Our events are organized with precision, ensuring a great experience for all participants.
             Join us for fun, fitness, and an unforgettable journey.
           </p>
@@ -152,8 +152,8 @@ const Home = () => {
 
         {/* Extra Section 2 */}
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-center mb-4 text-primary">Volunteer Opportunities</h2>
-          <p className="text-center text-gray-700 px-4 md:px-20">
+          <h2 className={`text-3xl font-bold text-center mt-10 mb-5 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Volunteer Opportunities</h2>
+          <p className={`text-center px-4 md:px-20 ${isDark ? 'text-white' : 'text-gray-700'}`}>
             Want to make a difference? Become a volunteer and help us bring these marathons to life!
             Join our team and be a part of something amazing.
           </p>

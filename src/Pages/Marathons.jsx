@@ -5,7 +5,7 @@ import MarathonCard from "../Components/MarathonCard";
 import { Helmet } from "react-helmet-async";
 
 const Marathons = () => {
-    const { user, marathons, setMarathons } = useContext(contextProvider);
+    const { user, marathons, setMarathons , isDark} = useContext(contextProvider);
     const [fetch, setFetch] = useState(true);
     useEffect(() => {
         const fethcing = async () => {
@@ -33,8 +33,8 @@ const Marathons = () => {
             <Helmet>
                 <title>Marathons | Marathon Managemnet</title>
             </Helmet>
-            <h1 className="text-3xl font-bold text-center my-6 text-primary">All Marathons</h1>
-            <button onClick={handleSort} className="btn bg-blue-600 text-white">Sort by Creation</button>
+            <h1 className={`text-3xl font-bold text-center my-6 ${isDark ? 'text-[#d69327]' : 'text-primary'} `}>All Marathons</h1>
+            <button onClick={handleSort} className={`btn  ${isDark ? `btn-outline text-[#d69327] bg-[#1e1e1e] hover:bg-[#d69327] hover:text-white`: `btn-primary`}`}>Sort by Creation</button>
 
             {
                 fetch ?

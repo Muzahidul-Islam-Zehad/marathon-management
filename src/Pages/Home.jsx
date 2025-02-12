@@ -90,7 +90,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Ronaldo Marathon League</h3>
             <p className="text-gray-600">Location: United City </p>
             <p className="text-gray-600">Event Date: {`1-12-24`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>
@@ -98,7 +98,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Albartigo Marathon League</h3>
             <p className="text-gray-600">Location: United State </p>
             <p className="text-gray-600">Event Date: {`3-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>
@@ -106,7 +106,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Naruto Marathon League</h3>
             <p className="text-gray-600">Location: Konoha Village </p>
             <p className="text-gray-600">Event Date: {`1-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>
@@ -114,7 +114,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Luffy Marathon League</h3>
             <p className="text-gray-600">Location: Wind Mill Village</p>
             <p className="text-gray-600">Event Date: {`3-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>
@@ -122,7 +122,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Ichigo Marathon League</h3>
             <p className="text-gray-600">Location: Soul Society </p>
             <p className="text-gray-600">Event Date: {`1-4-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>
@@ -130,7 +130,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Johan Marathon League</h3>
             <p className="text-gray-600">Location: Mad City </p>
             <p className="text-gray-600">Event Date: {`1-5-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
+            <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded">
               See Details
             </button>
           </div>

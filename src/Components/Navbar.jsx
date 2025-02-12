@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext,  } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { contextProvider } from "../Providers/AuthProvider";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(contextProvider);
+    const { user, logOut ,isDark, setIsDark } = useContext(contextProvider);
+    
 
     const handleLogOut = () => {
         logOut();
@@ -12,11 +14,11 @@ const Navbar = () => {
     return (
         <nav className="bg-base-100 bg-opacity-75 backdrop-blur-lg shadow-md">
             {/* Logo */}
-            <div className="w-11/12 mx-auto flex justify-between gap-6 items-center pt-4">
+            <div className="w-11/12 mx-auto flex justify-between gap-2 items-center pt-4">
                 <Link to="/" className="text-xl md:text-2xl font-bold text-primary">
                     Marathon Management
                 </Link>
-                <div className="">
+                <div className="flex items-center justify-end gap-4 w-2/3 md:w-1/2">
                     {user?.email ? (
                         <div className="flex gap-2">
                             <button
@@ -37,16 +39,19 @@ const Navbar = () => {
                             <NavLink
                                 to="/login"
                                 className={({ isActive }) =>
-                                    `px-2 md:px-3 py-1 md:py-2  rounded-lg text-sm md:text-base mr-2 ${isActive ? "bg-primary text-white" : "text-neutral"
+                                    `btn btn-outline mr-2 ${isActive ? "bg-primary text-white" : "text-neutral"
                                     }`
                                 }
+
+                            // px-2 md:px-3 py-1 md:py-2  rounded-lg text-sm md:text-base mr-2
+
                             >
                                 Login
                             </NavLink>
                             <NavLink
                                 to="/register"
                                 className={({ isActive }) =>
-                                    `px-2 md:px-3 py-1 md:py-2  rounded-lg text-sm md:text-base mr-2 ${isActive ? "bg-primary text-white" : "text-neutral"
+                                    `btn btn-outline ${isActive ? "bg-primary text-white" : "text-neutral"
                                     }`
                                 }
                             >
@@ -54,6 +59,15 @@ const Navbar = () => {
                             </NavLink>
                         </>
                     )}
+
+                    <div className="">
+                        <button onClick={()=>setIsDark(!isDark)} type="button" className="text-md md:text-2xl w-10 h-10 md:w-12 md:h-12 bg-slate-100 flex justify-center items-center rounded-full">
+                            {
+                                isDark ? <MdLightMode /> : <MdDarkMode />
+                            }
+                            
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="w-11/12 mx-auto flex flex-wrap justify-between items-center py-2">

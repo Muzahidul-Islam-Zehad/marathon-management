@@ -176,10 +176,10 @@ const MyMarathonsList = () => {
 
 
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
+                <div className={`modal-box ${isDark ? `bg-[#1e1e1e]`: `bg-slate-200`}`}>
                     <div className="my-6">
-                        <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-lg shadow-md">
-                            <h2 className="text-2xl font-bold text-center mb-6">Update A Marathon</h2>
+                        <div className={`max-w-3xl mx-auto p-6 shadow-md rounded-lg my-6 ${isDark ? `bg-[#444242]`: `bg-white`}`}>
+                            <h2 className={`text-2xl font-bold text-center mb-6 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Update A Marathon</h2>
 
                             {
                                 fetch
@@ -193,14 +193,14 @@ const MyMarathonsList = () => {
                                         {/* Marathon Title */}
                                         <div className="form-control mb-4 w-full">
                                             <label className="label">
-                                                <span className="label-text">Title</span>
+                                                <span className={`label-text ${isDark && `text-[#d69327]`}`}>Title</span>
                                             </label>
                                             <input
                                                 defaultValue={update?.title}
                                                 type="text"
                                                 name="title"
                                                 placeholder="Enter marathon title"
-                                                className="input input-bordered w-full"
+                                                className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                 required
                                             />
                                         </div>
@@ -210,13 +210,13 @@ const MyMarathonsList = () => {
                                             {/* Start Registration Date */}
                                             <div className="form-control">
                                                 <label className="label">
-                                                    <span className="label-text">Start Registration</span>
+                                                    <span className={`label-text ${isDark && `text-[#d69327]`}`}>Start Registration</span>
                                                 </label>
                                                 <DatePicker
 
                                                     selected={startRegistration}
                                                     onChange={(date) => setStartRegistration(date)}
-                                                    className="input input-bordered w-full"
+                                                    className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                     placeholderText="Select start date"
                                                     required
                                                 />
@@ -225,13 +225,13 @@ const MyMarathonsList = () => {
                                             {/* End Registration Date */}
                                             <div className="form-control">
                                                 <label className="label">
-                                                    <span className="label-text">End Registration</span>
+                                                    <span className={`label-text ${isDark && `text-[#d69327]`}`}>End Registration</span>
                                                 </label>
                                                 <DatePicker
 
                                                     selected={endRegistration}
                                                     onChange={(date) => setEndRegistration(date)}
-                                                    className="input input-bordered w-full"
+                                                    className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                     placeholderText="Select end date"
                                                     required
                                                 />
@@ -240,12 +240,12 @@ const MyMarathonsList = () => {
                                             {/* Marathon Start Date */}
                                             <div className="form-control">
                                                 <label className="label">
-                                                    <span className="label-text">Start Date</span>
+                                                    <span className={`label-text ${isDark && `text-[#d69327]`}`}>Start Date</span>
                                                 </label>
                                                 <DatePicker
                                                     selected={startDate}
                                                     onChange={(date) => setStartDate(date)}
-                                                    className="input input-bordered w-full"
+                                                    className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                     placeholderText="Select start date"
                                                     required
                                                 />
@@ -254,10 +254,10 @@ const MyMarathonsList = () => {
                                             {/* Running Distance */}
                                             <div className="form-control">
                                                 <label className="label">
-                                                    <span className="label-text">Distance</span>
+                                                    <span className={`label-text ${isDark && `text-[#d69327]`}`}>Distance</span>
                                                 </label>
                                                 <select
-                                                    className="select select-bordered w-full"
+                                                    className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                     name="distance"
                                                     defaultValue={update?.distance}
                                                     required
@@ -273,14 +273,14 @@ const MyMarathonsList = () => {
                                         {/* Location */}
                                         <div className="form-control mb-4 w-full">
                                             <label className="label">
-                                                <span className="label-text">Location</span>
+                                                <span className={`label-text ${isDark && `text-[#d69327]`}`}>Location</span>
                                             </label>
                                             <input
                                                 defaultValue={update?.location}
                                                 type="text"
                                                 name="location"
                                                 placeholder="Enter location"
-                                                className="input input-bordered w-full"
+                                                className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                 required
                                             />
                                         </div>
@@ -288,11 +288,11 @@ const MyMarathonsList = () => {
                                         {/* Description */}
                                         <div className="form-control mb-4 w-full">
                                             <label className="label">
-                                                <span className="label-text">Description</span>
+                                                <span className={`label-text ${isDark && `text-[#d69327]`}`}>Description</span>
                                             </label>
                                             <textarea
                                                 defaultValue={update?.description}
-                                                className="textarea textarea-bordered w-full"
+                                                className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                 name="description"
                                                 placeholder="Enter a description of the marathon"
                                                 required
@@ -302,21 +302,21 @@ const MyMarathonsList = () => {
                                         {/* Marathon Image URL */}
                                         <div className="form-control mb-4 w-full">
                                             <label className="label">
-                                                <span className="label-text">Marathon Image URL</span>
+                                                <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Image URL</span>
                                             </label>
                                             <input
                                                 defaultValue={update?.image}
                                                 type="url"
                                                 name="image"
                                                 placeholder="Enter image URL"
-                                                className="input input-bordered w-full"
+                                                className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                                 required
                                             />
                                         </div>
 
                                         {/* Submit Button */}
                                         <div className="form-control">
-                                            <button type="submit" className="btn btn-primary w-full">Update Marathon</button>
+                                            <button type="submit" className={`w-full  btn  ${isDark ? `btn-outline text-[#d69327] bg-[#1e1e1e] hover:bg-[#d69327] hover:text-white` : `btn-primary`}`}>Update Marathon</button>
                                         </div>
                                     </form>
                             }

@@ -188,9 +188,9 @@ const MyApplyList = () => {
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             {/* <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>open modal</button> */}
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
-                    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg my-6">
-                        <h2 className="text-2xl font-bold text-center mb-6">Update Marathon Registration</h2>
+                <div className={`modal-box ${isDark ? `bg-[#1e1e1e]`: `bg-slate-200`}`}>
+                    <div className={`max-w-3xl mx-auto p-6 shadow-md rounded-lg my-6 ${isDark ? `bg-[#444242]`: `bg-white`}`}>
+                        <h2 className={`text-2xl font-bold text-center mb-6 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Update Marathon Registration</h2>
                         {
                             fetch
                                 ?
@@ -202,13 +202,13 @@ const MyApplyList = () => {
                                     {/* Email */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Email</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Email</span>
                                         </label>
                                         <input
                                             defaultValue={user.email}
                                             type="email"
                                             name="email"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Your email"
                                             readOnly
                                         />
@@ -217,13 +217,13 @@ const MyApplyList = () => {
                                     {/* Marathon Title */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Marathon Title</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Title</span>
                                         </label>
                                         <input
                                             defaultValue={update.title}
                                             type="text"
                                             name="marathonTitle"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Selected Marathon Title"
                                             readOnly
                                         />
@@ -232,13 +232,13 @@ const MyApplyList = () => {
                                     {/* Marathon Start Date */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Marathon Start Date</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Marathon Start Date</span>
                                         </label>
                                         <input
                                             defaultValue={update?.startDate}
                                             type="text"
                                             name="startDate"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Marathon Start Date"
                                             readOnly
                                         />
@@ -247,13 +247,13 @@ const MyApplyList = () => {
                                     {/* First Name */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">First Name</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>First Name</span>
                                         </label>
                                         <input
                                             defaultValue={update?.name?.firstName}
                                             type="text"
                                             name="firstName"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Enter your first name"
                                             required
                                         />
@@ -262,13 +262,13 @@ const MyApplyList = () => {
                                     {/* Last Name */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Last Name</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Last Name</span>
                                         </label>
                                         <input
                                             defaultValue={update?.name?.lastName}
                                             type="text"
                                             name="lastName"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Enter your last name"
                                             required
                                         />
@@ -277,13 +277,13 @@ const MyApplyList = () => {
                                     {/* Contact Number */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Contact Number</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Contact Number</span>
                                         </label>
                                         <input
                                             defaultValue={update.contactNumber}
                                             type="tel"
                                             name="contactNumber"
-                                            className="input input-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Enter your contact number"
                                             required
                                         />
@@ -292,12 +292,12 @@ const MyApplyList = () => {
                                     {/* Additional Info */}
                                     <div className="form-control mb-4">
                                         <label className="label">
-                                            <span className="label-text">Additional Information</span>
+                                            <span className={`label-text ${isDark && `text-[#d69327]`}`}>Additional Information</span>
                                         </label>
                                         <textarea
                                             defaultValue={update.additionalInfo}
                                             name="additionalInfo"
-                                            className="textarea textarea-bordered w-full"
+                                            className={`w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${isDark && `bg-[#282006] text-slate-200`}`}
                                             placeholder="Provide any additional details"
                                             required
                                         ></textarea>
@@ -305,8 +305,8 @@ const MyApplyList = () => {
 
                                     {/* Submit Button */}
                                     <div className="form-control">
-                                        <button type="submit" className="btn btn-primary w-full">
-                                            Submit Registration
+                                        <button type="submit" className={`w-full  btn  ${isDark ? `btn-outline text-[#d69327] bg-[#1e1e1e] hover:bg-[#d69327] hover:text-white` : `btn-primary`}`}>
+                                            Update Registration
                                         </button>
                                     </div>
                                 </form>

@@ -11,7 +11,7 @@ import { Helmet } from "react-helmet-async";
 import { contextProvider } from "../Providers/AuthProvider";
 
 const Home = () => {
-  const {isDark} = useContext(contextProvider);
+  const { isDark } = useContext(contextProvider);
   const [limited, setLimited] = useState([]);
   const [fetch, setFetch] = useState(true);
 
@@ -86,7 +86,6 @@ const Home = () => {
       <div className={`upcoming-marathons-section mt-10 `}>
         <h2 className={`text-3xl font-bold text-center mt-10 mb-5 ${isDark ? `text-[#d69327]` : `text-primary`}`}>Upcoming Marathons</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Static Content for Marathon Cards */}
 
           <div className={` shadow-lg rounded-lg p-6 flex flex-col items-start ${isDark ? 'bg-[#444242]' : 'bg-white'}`}>
             <h3 className={`text-xl font-bold mb-2 ${isDark && `text-[#d69327]`}`}>Ronaldo Marathon League</h3>
@@ -96,14 +95,15 @@ const Home = () => {
               See Details
             </button>
           </div>
-          <div className={`bg-white shadow-lg rounded-lg p-6 flex flex-col items-start ${isDark ? 'bg-[#444242]' : 'bg-white'}`}>
+          {/* <div className={`bg-white shadow-lg rounded-lg p-6 flex flex-col items-start ${isDark ? 'bg-[#444242]' : 'bg-white'}`}>
             <h3 className={`text-xl font-bold mb-2 ${isDark && `text-[#d69327]`}`}>Albartigo Marathon League</h3>
             <p className={` ${isDark ? `text-white` : `text-gray-600`}`}>Location: United State </p>
             <p className={` ${isDark ? `text-white` : `text-gray-600`}`}>Event Date: {`3-2-25`}</p>
             <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
               See Details
             </button>
-          </div>
+          </div> */}
+          {/*
           <div className={`bg-white shadow-lg rounded-lg p-6 flex flex-col items-start ${isDark ? 'bg-[#444242]' : 'bg-white'}`}>
             <h3 className={`text-xl font-bold mb-2 ${isDark && `text-[#d69327]`}`}>Naruto Marathon League</h3>
             <p className={` ${isDark ? `text-white` : `text-gray-600`}`}>Location: Konoha Village </p>
@@ -135,7 +135,7 @@ const Home = () => {
             <button disabled className="mt-4 px-4 py-2 bg-gray-400 text-white rounded cursor-not-allowed">
               See Details
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

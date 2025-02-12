@@ -12,10 +12,12 @@ const AddMarathon = () => {
     const [endRegistration, setEndRegistration] = useState(null);
     const [startDate, setStartDate] = useState(null);
     const { user } = useContext(contextProvider);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleAddMarathon = async e => {
         e.preventDefault();
+        setLoading(true);
 
         const form = e.target;
         const title = form.title.value;
@@ -49,17 +51,18 @@ const AddMarathon = () => {
             });
 
             navigate('/dashboard/my-marathon-list');
+            setLoading(false);
         }
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto p-6 bg-base-200 rounded-lg shadow-md lg:my-10">
 
             <Helmet>
                 <title>Add Marathon | Dashboard | Marathon Managemnet</title>
             </Helmet>
 
-            <h2 className="text-2xl font-bold text-center mb-6">Create a New Marathon</h2>
+            <h2 className="text-2xl font-bold text-center mb-6 text-primary">Create a New Marathon</h2>
 
             <form onSubmit={handleAddMarathon}>
                 {/* Marathon Title */}
@@ -182,7 +185,7 @@ const AddMarathon = () => {
 
                 {/* Submit Button */}
                 <div className="form-control">
-                    <button type="submit" className="btn btn-primary w-full">Add Marathon</button>
+                    <button type="submit" disabled={loading} className={`btn btn-primary w-full`}>Add Marathon</button>
                 </div>
             </form>
         </div>

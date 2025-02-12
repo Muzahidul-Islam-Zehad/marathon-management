@@ -33,7 +33,7 @@ const Marathons = () => {
             <Helmet>
                 <title>Marathons | Marathon Managemnet</title>
             </Helmet>
-            <h1 className="text-3xl font-bold text-center my-6">All Marathons</h1>
+            <h1 className="text-3xl font-bold text-center my-6 text-primary">All Marathons</h1>
             <button onClick={handleSort} className="btn bg-blue-600 text-white">Sort by Creation</button>
 
             {

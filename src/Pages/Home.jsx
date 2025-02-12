@@ -63,7 +63,7 @@ const Home = () => {
       </div>
 
       <div className="">
-        <h1 className="text-3xl font-bold text-center my-6">New Marathons</h1>
+        <h1 className="text-3xl font-bold text-center mt-10 mb-5 text-primary">New Marathons</h1>
 
         {
           fetch ?
@@ -82,7 +82,7 @@ const Home = () => {
 
       {/* Upcoming Marathons Section */}
       <div className="upcoming-marathons-section mt-10">
-        <h2 className="text-3xl font-bold text-center mb-6">Upcoming Marathons</h2>
+        <h2 className="text-3xl font-bold text-center mt-10 mb-5 text-primary">Upcoming Marathons</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Static Content for Marathon Cards */}
 
@@ -90,7 +90,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Ronaldo Marathon League</h3>
             <p className="text-gray-600">Location: United City </p>
             <p className="text-gray-600">Event Date: {`1-12-24`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -98,7 +98,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Albartigo Marathon League</h3>
             <p className="text-gray-600">Location: United State </p>
             <p className="text-gray-600">Event Date: {`3-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -106,7 +106,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Naruto Marathon League</h3>
             <p className="text-gray-600">Location: Konoha Village </p>
             <p className="text-gray-600">Event Date: {`1-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -114,7 +114,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Luffy Marathon League</h3>
             <p className="text-gray-600">Location: Wind Mill Village</p>
             <p className="text-gray-600">Event Date: {`3-2-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -122,7 +122,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Ichigo Marathon League</h3>
             <p className="text-gray-600">Location: Soul Society </p>
             <p className="text-gray-600">Event Date: {`1-4-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -130,7 +130,7 @@ const Home = () => {
             <h3 className="text-xl font-bold mb-2">Johan Marathon League</h3>
             <p className="text-gray-600">Location: Mad City </p>
             <p className="text-gray-600">Event Date: {`1-5-25`}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="mt-4 px-4 py-2 bg-primary text-white rounded">
               See Details
             </button>
           </div>
@@ -141,7 +141,7 @@ const Home = () => {
       <div className="extra-sections mt-16">
         {/* Extra Section 1 */}
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-center mb-4">Why Choose Our Marathons?</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-primary">Why Choose Our Marathons?</h2>
           <p className="text-center text-gray-700 px-4 md:px-20">
             Our events are organized with precision, ensuring a great experience for all participants.
             Join us for fun, fitness, and an unforgettable journey.
@@ -150,7 +150,7 @@ const Home = () => {
 
         {/* Extra Section 2 */}
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-center mb-4">Volunteer Opportunities</h2>
+          <h2 className="text-3xl font-bold text-center mb-4 text-primary">Volunteer Opportunities</h2>
           <p className="text-center text-gray-700 px-4 md:px-20">
             Want to make a difference? Become a volunteer and help us bring these marathons to life!
             Join our team and be a part of something amazing.

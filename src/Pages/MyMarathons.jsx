@@ -121,15 +121,15 @@ const MyMarathonsList = () => {
             <Helmet>
                 <title>My Marathons | Dashboard | Marathon Managemnet</title>
             </Helmet>
-            <h1 className="text-2xl font-semibold mb-4">My Marathons</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center text-primary">My Marathons</h1>
             {fetch ? (
                 <div className="flex items-center justify-center w-full">
                     <span className="loading loading-infinity w-20"></span>
                 </div>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="table-auto min-w-max w-full border-collapse border border-gray-200">
-                        <thead className="bg-gray-100">
+                    <table className="table-auto bg-white min-w-max w-full border-collapse border-2 border-gray-200">
+                        <thead className="bg-primary text-white">
                             <tr>
                                 <th className="border border-gray-300 px-4 py-2">#</th>
                                 <th className="border border-gray-300 px-4 py-2">Title</th>

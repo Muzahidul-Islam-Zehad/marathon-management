@@ -65,7 +65,7 @@ const LoginPage = () => {
                 {/* Login Form */}
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className={`${isDark ? `text-[#d69327]` : `text-gray-700`} block text-sm font-medium`}>
                             Email Address
                         </label>
                         <input
@@ -78,7 +78,7 @@ const LoginPage = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="password" className={`${isDark ? `text-[#d69327]` : `text-gray-700`} block text-sm font-medium`}>
                             Password
                         </label>
                         <input

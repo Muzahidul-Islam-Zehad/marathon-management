@@ -115,7 +115,7 @@ const MyApplyList = () => {
                 <title>My Applied Marathon | Dashboard | Marathon Managemnet</title>
             </Helmet>
             <h2 className={`text-2xl font-bold mb-4 text-center ${isDark ? `text-[#d69327]` : `text-primary`}`}>My Applied Marathons</h2>
-            <label className="input input-bordered flex items-center gap-2 my-2 w-full sm:w-1/2">
+            <label className={`input input-bordered flex items-center gap-2 my-2 w-full sm:w-1/2 ${isDark && `bg-[#282006] text-slate-200`}`}>
                 <input
                     type="text"
                     onChange={handleSearch}

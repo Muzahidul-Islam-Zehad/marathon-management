@@ -8,7 +8,7 @@ import DatePicker from "react-datepicker";
 import { Helmet } from "react-helmet-async";
 
 const MyMarathonsList = () => {
-    const { user } = useContext(contextProvider);
+    const { user, isDark } = useContext(contextProvider);
     const [myMarathon, setMyMarathon] = useState([]);
     const [fetch, setFetch] = useState(true);
     const [startRegistration, setStartRegistration] = useState(null);
@@ -121,15 +121,15 @@ const MyMarathonsList = () => {
             <Helmet>
                 <title>My Marathons | Dashboard | Marathon Managemnet</title>
             </Helmet>
-            <h1 className="text-2xl font-bold mb-4 text-center text-primary">My Marathons</h1>
+            <h1 className={`text-2xl font-bold mb-4 text-center ${isDark ? `text-[#d69327]` : `text-primary`}`}>My Marathons</h1>
             {fetch ? (
                 <div className="flex items-center justify-center w-full">
                     <span className="loading loading-infinity w-20"></span>
                 </div>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="table-auto bg-white min-w-max w-full border-collapse border-2 border-gray-200">
-                        <thead className="bg-primary text-white">
+                    <table className={`table-auto min-w-max w-full border-collapse border-2 border-gray-200 ${isDark ? `bg-[#444242] text-white` : `bg-white`}`}>
+                        <thead className={` text-white ${isDark ? `bg-[#d69327]`: `bg-primary`}`}>
                             <tr>
                                 <th className="border border-gray-300 px-4 py-2">#</th>
                                 <th className="border border-gray-300 px-4 py-2">Title</th>

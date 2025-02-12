@@ -8,7 +8,7 @@ import { fr } from "date-fns/locale";
 import { Helmet } from "react-helmet-async";
 
 const MyApplyList = () => {
-    const { user } = useContext(contextProvider);
+    const { user, isDark } = useContext(contextProvider);
     const [myApply, setMyApply] = useState([]);
     const [fetch, setFetch] = useState(true);
     const [update, setUpdate] = useState({});
@@ -114,7 +114,7 @@ const MyApplyList = () => {
             <Helmet>
                 <title>My Applied Marathon | Dashboard | Marathon Managemnet</title>
             </Helmet>
-            <h2 className="text-2xl font-bold mb-6 text-center text-primary">My Applied Marathons</h2>
+            <h2 className={`text-2xl font-bold mb-4 text-center ${isDark ? `text-[#d69327]` : `text-primary`}`}>My Applied Marathons</h2>
             <label className="input input-bordered flex items-center gap-2 my-2 w-full sm:w-1/2">
                 <input
                     type="text"
@@ -142,8 +142,8 @@ const MyApplyList = () => {
                 </div>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="table-auto w-full border-collapse bg-white border border-gray-200">
-                        <thead className="bg-primary text-white font-bold">
+                    <table className={`table-auto min-w-max w-full border-collapse border-2 border-gray-200 ${isDark ? `bg-[#444242] text-white` : `bg-white`}`}>
+                        <thead className={` text-white ${isDark ? `bg-[#d69327]`: `bg-primary`}`}>
                             <tr className="">
                                 <th className="border border-gray-300 px-4 py-2">#</th>
                                 <th className="border border-gray-300 px-4 py-2">Marathon Title</th>

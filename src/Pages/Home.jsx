@@ -4,12 +4,14 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import MarathonCard from "../Components/MarathonCard";
 import { Helmet } from "react-helmet-async";
+import { contextProvider } from "../Providers/AuthProvider";
 
 const Home = () => {
+  const {isDark} = useContext(contextProvider);
   const [limited, setLimited] = useState([]);
   const [fetch, setFetch] = useState(true);
 
